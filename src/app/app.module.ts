@@ -10,6 +10,7 @@ import { ServiceModule } from './services/service.module';
 import { RegistroComponent } from './login/registro.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     LoginComponent,
     RegistroComponent,
     NotFoundComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

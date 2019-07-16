@@ -12,6 +12,7 @@ import { BlogComponent } from './blogs/blog.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TruncatePipe } from '../pipes/truncate.pipe';
+import { ImagenPipe } from '../pipes/imagen.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TruncatePipe } from '../pipes/truncate.pipe';
     AboutComponent,
     BlogsComponent,
     BlogComponent,
-    TruncatePipe
+    TruncatePipe,
+    ImagenPipe
   ],
   exports: [
     PagesComponent,

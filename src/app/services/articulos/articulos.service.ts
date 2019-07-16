@@ -34,13 +34,41 @@ export class ArticulosService {
     }));
   }
 
-  crearArticulo(body) {
-    let url2 = URL_SERVICIOS;
-    url2 += '/articulo/blog/';
-    return this.http.post(url2, body)
-    .pipe(map((resp) => {
-      console.log(resp);
-    }));
+  // crearArticulo(body) {
+  //   let url2 = URL_SERVICIOS;
+  //   url2 += '/articulo/blog/';
+  //   return this.http.post(url2, body)
+  //   .pipe(map((resp) => {
+  //     console.log(resp);
+  //   }));
+  // }
+
+  subirArchivo( archivo: File, tipo: string, titulo, contenido) {
+    return new Promise( (resolve, reject) => {
+      const formData = new FormData();
+      const xhr = new XMLHttpRequest();
+      formData.append('imagen', archivo, archivo.name);
+      formData.append('titulo', titulo);
+      formData.append('contenido', contenido);
+      xhr.onreadystatechange = () => {
+        if ( xhr.readyState === 4 ) {
+          if ( xhr.status === 200 ) {
+            console.log('imagen subida');
+            resolve( JSON.parse( xhr.response ) );
+          } else {
+            console.log('Falló la subida');
+            reject( xhr.response );
+          }
+        }
+      };
+
+      // let url = URL_SERVICIOS + '/upload/' + tipo + '/' + id;
+      let url2 = URL_SERVICIOS;
+      url2 += '/articulo/' + tipo;
+
+      xhr.open('POST', url2, true);
+      xhr.send( formData );
+    });
   }
 
   getById(id: string) {

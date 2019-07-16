@@ -18,7 +18,8 @@
             <!-- TARGETA -->
             <div class="card mb-3 cardBlog ">
                 <div class="imagen ">
-                    <img class="card-img-top " src="https://img.freepik.com/foto-gratis/parques-montanas-reflexion-montana-decoracion-jardin_1417-1025.jpg?size=626&ext=jpg " alt="Card image cap ">
+                    <!-- <img class="card-img-top " src="https://img.freepik.com/foto-gratis/parques-montanas-reflexion-montana-decoracion-jardin_1417-1025.jpg?size=626&ext=jpg " alt="Card image cap "> -->
+                    <img class="card-img-top " [src]="art.img | imagen" alt="Card image cap ">
                     <div class="tituloImg ">
                         <h2 class="titulo mx-4 ">{{ art.titulo }}</h2>
                     </div>
@@ -42,7 +43,7 @@
                 <!-- <p>{{blogs | json}}</p> -->
                 <div class="card mb-3 mx-auto cardBlog ">
                     <div class="imagen ">
-                        <img class="card-img-top " src="https://img.freepik.com/foto-gratis/parques-montanas-reflexion-montana-decoracion-jardin_1417-1025.jpg?size=626&ext=jpg " alt="Card image cap">
+                        <img class="card-img-top " [src]="blog.img | imagen" alt="Card image cap">
                         <div class="tituloImg ">
                             <h4 class="titulo mx-3 ">{{ blog.titulo }}</h4>
                         </div>
