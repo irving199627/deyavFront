@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <!-- <div class="mt-3"> -->
+
+
+        <input type="text" class="form-control mt-3" placeholder="Buscar Articulo ">
+        <!-- <div class="input-group-append ">
+                <button class="btn btn-outline-secondary " type="button " id="button-addon2 ">Buscar</button>
+            </div> -->
+        <!-- </div> -->
+    </div>
+</div>
+
+<div class="container pt-3 ">
+
+    <div class="row pt-4 ">
+        <div class="col-sm-10 col-md-10 col-lg-10 mx-auto " *ngFor="let art of ultimo">
+            <!-- TARGETA -->
+            <div class="card mb-3 cardBlog ">
+                <div class="imagen ">
+                    <img class="card-img-top " src="https://img.freepik.com/foto-gratis/parques-montanas-reflexion-montana-decoracion-jardin_1417-1025.jpg?size=626&ext=jpg " alt="Card image cap ">
+                    <div class="tituloImg ">
+                        <h2 class="titulo mx-4 ">{{ art.titulo }}</h2>
+                    </div>
+                </div>
+                <div class="card-body ">
+                    <p class="card-text cuerpo ">{{art.contenido | truncate }}</p>
+                    <p class="card-text cuerpo "><small>
+                      <a [routerLink]="[ '/blog', art._id] ">Continuar leyendo...</a>
+                    </small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="row " id="articules ">
+    <div class="col-sm-10 col-md-10 col-lg-10 mx-auto mt-4 ">
+        <div class="row px-3 " id="row-articules ">
+            <!-- CARD -->
+            <div class="col-12 col-sm-5 col-md-6 col-lg-4 px-0 py-2 mx-auto " style="max-width: 250px;" *ngFor="let blog of blogs">
+                <!-- <p>{{blogs | json}}</p> -->
+                <div class="card mb-3 mx-auto cardBlog ">
+                    <div class="imagen ">
+                        <img class="card-img-top " src="https://img.freepik.com/foto-gratis/parques-montanas-reflexion-montana-decoracion-jardin_1417-1025.jpg?size=626&ext=jpg " alt="Card image cap">
+                        <div class="tituloImg ">
+                            <h4 class="titulo mx-3 ">{{ blog.titulo }}</h4>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <p class="card-text cuerpo ">{{blog.contenido | truncate}}</p>
+                        <p class="card-text cuerpo "><small>
+                            <a [routerLink]="[ '/blog', blog._id] ">Continuar leyendo...</a>
+                          </small></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- END CARD -->
+
+
+        </div>
+    </div>
+</section>
+
+<!-- <div class="row">
+    <div class="container">
+        <div class="card-columns">
+            <div class="col-sm-10 col-md-10 col-lg-10 mx-auto mt-4 ">
+
+                <div class="card" *ngFor="let blog of blogs">
+                    <img class="card-img-top" alt="..." src="https://img.freepik.com/foto-gratis/parques-montanas-reflexion-montana-decoracion-jardin_1417-1025.jpg?size=626&ext=jpg ">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title that wraps to a new line</h5>
+                        <p class="card-text">{{blog.contenido | truncate}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

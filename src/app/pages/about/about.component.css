@@ -1,0 +1,9 @@
+.cardAbout {
+    width: 100%;
+    filter: drop-shadow(5px 5px 5px #444);
+    margin-bottom: 5%;
+}
+
+.marginTop {
+    margin-top: 5%;
+}

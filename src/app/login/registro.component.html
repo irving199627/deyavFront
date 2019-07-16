@@ -1,0 +1,70 @@
+<app-navbar>
+</app-navbar>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
+            <div class="card card2">
+                <div class="card-body">
+
+                    <form class="" ngNativeValidate (ngSubmit)="registrarUsuarios()" [formGroup]="forma">
+                        <div class="row">
+
+                            <div class="form-group col-md-6 col-lg-6 col">
+
+                                <input formControlName="nombre" type="text" class="form-control" placeholder="Nombres" name="nombre" required>
+                            </div>
+
+
+                            <div class="form-group col-md-6 col-lg-6 col">
+                                <input formControlName="apellidos" type="text" class="form-control" placeholder="Apellidos" name="apellidos" required>
+                            </div>
+                            <div class="col-sm-12"></div>
+                            <div class="form-group col-lg-6 col-md-6 col">
+                                <input formControlName="trabajo_actual" type="text" class="form-control" placeholder="Trabajo actual" name="trabajo_actual" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col">
+                                <input formControlName="nickname" type="text" class="form-control" placeholder="Nombre de usuario" name="nickname" required>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input formControlName="email" type="email" class="form-control" required placeholder="Email">
+                            </div>
+
+                            <div class="form-group col-lg-6 col-md-6 col">
+                                <input formControlName="password" type="password" class="form-control" required placeholder="Contraseña" name="password">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col">
+                                <input [ngClass]="{'is-invalid': forma.errors?.sonIguales && !forma.controls.password2.pristine, 'is-valid': !forma.errors?.sonIguales && !forma.controls.password2.pristine}" formControlName="password2" type="password" class="form-control" placeholder="Confirmar contraseña"
+                                    name="password2" required>
+                                <div class="invalid-feedback">
+                                    Las contraseñas deben ser iguales
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-3">
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="submit" [disabled]="forma.invalid" class="btn btn-outline-warning btn-block rounded-pill contenedorBtn">Registrarse</button>
+                            </div>
+                            <div class="col-lg-3"></div>
+
+
+                            <p class="text-center text-muted mb-0 contenedorBtn mb-2 col-md-12"> - o - </p>
+
+
+                            <!-- <div class="col-lg-6 col-xl-6 col-md-6 col-sm-3 mb-2">
+                                <!-- <button class="btn btn-outline-danger btn-block" id="btnGoogle" type="button"><i class="fab fa-google"></i> Google</button> 
+                        </div> -->
+                            <div class="col-lg-2 col-md-2 col-xl-2"></div>
+                            <div class="col-lg-8 col-xl-8 col-md-8 col-sm-12">
+                                <button [routerLink]="['/login']" class="btn btn-outline-primary btn-block" type="button">Iniciar Sesión <i class="fas fa-user"></i></button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

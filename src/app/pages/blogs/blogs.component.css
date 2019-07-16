@@ -1,0 +1,67 @@
+.tituloImg {
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+    font-size: 1em;
+    color: #fff;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+}
+
+.cardBlog {
+    /* filter: drop-shadow(5px 5px 5px #444); */
+    box-shadow: 1px 0 20px 5px #444;
+}
+
+a {
+    color: #ed8344;
+    text-decoration: none;
+}
+
+.imagen {
+    position: relative;
+}
+
+#row-articules {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cuerpo {
+    font-family: 'Century Gothic Regular';
+    font-size: .9em;
+}
+
+.titulo {
+    font-family: 'the bold font';
+    font-size: 1.9em;
+}
+
+input[type=text] {
+    /* border: 2px #ed8344 solid; */
+    box-shadow: 0 0 8px 0 #ed8344;
+    margin: auto;
+    width: 30%;
+    -webkit-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    /* width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px; */
+    /* font-size: 16px;
+    background-color: white;
+    background-image: url('/assets/img/icons/search.png');
+    background-size: 7%;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out; */
+}
+
+input[type=text]:focus {
+    /* -webkit-box-shadow: none; */
+    box-shadow: 0 0 8px 0 #ed8344;
+    border: 0;
+    width: 100%;
+}

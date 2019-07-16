@@ -1,0 +1,46 @@
+/* .card {
+    margin-top: 3% !important;
+    margin-bottom: 4% !important;
+}
+
+.fondoServicios {
+    background-image: url('/assets/img/servicios/iconos/cuadro de servicios.png');
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+.imgCuad {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10%;
+}
+
+.imgMVV {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+.card {
+    margin-top: 20%;
+    padding-top: 2%;
+    margin-bottom: 20%;
+    text-align: justify;
+}
+
+#valores {
+    width: 250px;
+}
+
+.textCentury {
+    font-family: 'Century Gothic Regular';
+    font-size: .9em;
+} */
+
+.img-slider {
+    -webkit-filter: brightness(70%);
+    filter: brightness(70%);
+}
