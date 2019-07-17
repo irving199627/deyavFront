@@ -9,7 +9,7 @@ import { ArticulosService } from '../../services/articulos/articulos.service';
 export class BlogsComponent implements OnInit {
   blogs = [];
   ultimo = [];
-  ultimoActivo: any = [];
+  ultimoActivo: any;
   p = 0;
   collection = [];
   constructor( public artService: ArticulosService ) {
