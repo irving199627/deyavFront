@@ -19,6 +19,7 @@ export class BlogsComponent implements OnInit {
       this.ultimo.push (this.artService.ultimo);
       this.ultimo = this.artService.limpiarHTML(this.ultimo);
       this.blogs = this.artService.limpiarHTML(resp);
+      this.blogs.reverse();
     });
   }
 

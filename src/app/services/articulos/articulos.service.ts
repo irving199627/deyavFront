@@ -52,7 +52,8 @@ export class ArticulosService {
       formData.append('contenido', contenido);
       xhr.onreadystatechange = () => {
         if ( xhr.readyState === 4 ) {
-          if ( xhr.status === 200 ) {
+          console.log(xhr.status);
+          if ( xhr.status === 200 || xhr.status === 201 ) {
             console.log('imagen subida');
             resolve( JSON.parse( xhr.response ) );
           } else {

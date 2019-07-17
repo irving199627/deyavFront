@@ -69,8 +69,8 @@
                     </ckeditor>
                     <div *ngIf="myckeditor.invalid && myckeditor.touched" class="help-block">Required field.</div>
                 </div>
-                <div [innerHTML]="mycontent" id="txt"></div>
-                <p>{{mycontent}}</p>
+                <!-- <div [innerHTML]="mycontent" id="txt"></div>
+                <p>{{mycontent}}</p> -->
                 <button [disabled]="myForm.invalid" class="btn btn-primary" (click)="crearBlog(titulo.value)">Guardar</button>
             </form>
         </div>
