@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../services/articulos/articulos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inicio',
@@ -13,7 +14,7 @@ export class InicioComponent implements OnInit {
   log  = '';
   imagenSubir: File;
   imagenTemp: string;
-  constructor( public artService: ArticulosService) { this.mycontent = `<p>My html content</p>`; }
+  constructor( public artService: ArticulosService) { this.mycontent = ``; }
 
   ngOnInit() {
     this.ckeConfig = {
@@ -46,6 +47,7 @@ export class InicioComponent implements OnInit {
     this.artService.subirArchivo(this.imagenSubir, 'blog', titulo, this.mycontent)
     .then(resp => {
       console.log(resp);
+      location.reload();
     })
     .catch(err => {
       console.log('Error en la carga...');
@@ -61,6 +63,7 @@ export class InicioComponent implements OnInit {
 
     if (archivo.type.indexOf('image') < 0 ) {
       this.imagenSubir = null;
+      Swal.fire('Solo imagenes', 'El archivo seleccionado no es una imagen', 'error');
       console.log('Solo imagenes', 'El archivo seleccionado no es una imagen', 'error');
       return;
     }

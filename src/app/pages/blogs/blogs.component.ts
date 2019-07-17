@@ -9,6 +9,7 @@ import { ArticulosService } from '../../services/articulos/articulos.service';
 export class BlogsComponent implements OnInit {
   blogs = [];
   ultimo = [];
+  ultimoActivo: any;
   constructor( public artService: ArticulosService ) {
   }
 
@@ -16,9 +17,9 @@ export class BlogsComponent implements OnInit {
     this.artService.getArticulos()
     .subscribe(resp => {
       // this.blogs = resp;
-      this.ultimo.push (this.artService.ultimo);
-      this.ultimo = this.artService.limpiarHTML(this.ultimo);
-      this.blogs = this.artService.limpiarHTML(resp);
+      this.ultimo = this.artService.limpiarHTML(this.artService.ultimo);
+      this.ultimoActivo = this.ultimo[this.ultimo.length - 1];
+      this.blogs = resp;
       this.blogs.reverse();
     });
   }

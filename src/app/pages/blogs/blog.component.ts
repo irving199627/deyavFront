@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticulosService } from '../../services/articulos/articulos.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-blog',
@@ -28,6 +28,26 @@ export class BlogComponent implements OnInit {
           console.log(articulo);
           this.articulo = articulo.articuloBD;
         });
+  }
+
+  eliminarArticulo() {
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: 'Está apunto de borrar este articulo',
+      type: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    })
+    .then((borrar) => {
+      if (borrar) {
+        this.artService.eliminarArticulo(this.id)
+        .subscribe();
+      }
+    });
   }
 
 }
