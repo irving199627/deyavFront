@@ -26,8 +26,7 @@ export class BlogsComponent implements OnInit {
     });
     this.artService.getUltimoArticulos()
     .subscribe((resp: any) => {
-      this.ultimoActivo = resp.articulos[0];
-      console.log(resp.articulos[0]);
+      this.ultimoActivo = this.artService.limpiarHTML(resp.articulos)[0];
     });
   }
 
