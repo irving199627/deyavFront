@@ -1,14 +1,22 @@
 <!-- <div [innerHTML]="articulo.contenido" id="txt"></div> -->
-<div class="container">
-    <div class="row">
-        <img [src]="articulo.img | imagen" class="img-fluid" alt="Responsive image" style="margin: auto;">
+<section class="container pt-5">
+    <h3 class="pl-3">{{articulo.titulo}}</h3>
+    <div style=" width: 100%; display: flex;">
+        <img [src]="articulo.img | imagen" alt="" class="col-12 col-sm-12 col-md-12 col-lg-12 centro" style="max-height: 25em; max-width: 37.5em;">
     </div>
-</div>
-
-<div class="container">
-    <h1>{{ articulo.titulo }}</h1>
-    <p [innerHTML]="articulo.contenido"></p>
-
+    <p class="mt-2 pl-3 autor">Autor: Deyanira Trinidad Alvarez Villajuana</p>
+    <article>
+        <p class="text-justify" [innerHTML]="articulo.contenido"></p>
+    </article>
     <br>
-    <button class="btn btn-outline-danger" (click)="eliminarArticulo()"><i class="fa fa-trash"></i></button>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-outline-danger" (click)="eliminarArticulo()"><i class="fa fa-trash"></i></button>
+            </div>
+            <div class="col-lg-6">
+                <a [routerLink]="['/blog']">regresar</a>
+            </div>
+        </div>
+    </div>
+</section>

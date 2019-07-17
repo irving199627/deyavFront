@@ -1,0 +1,42 @@
+:root {
+    --morado-ligero: #B583AD;
+    --morado: #6D1A5E;
+}
+
+section img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.centro {
+    margin: auto;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(121, 121, 121);
+}
+
+.card,
+.card-body {
+    border: none;
+}
+
+.autor {
+    color: var(--morado-ligero);
+    font-weight: 600;
+}
+
+@supports(object-fit: cover) {
+    .foto-tarjeta {
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+@media (min-width: 700px) {
+    article p {
+        column-count: 2;
+    }
+}
