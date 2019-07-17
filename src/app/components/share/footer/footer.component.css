@@ -1,9 +1,10 @@
 footer {
-    bottom: 0;
+    /* bottom: 0; */
+    clear: both;
+    position: relative;
     width: 100%;
     /* background-image: url('/assets/img/barra de abajo.png'); */
     background-size: cover;
-    position: absolute;
 }
 
 .margen {
