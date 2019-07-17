@@ -72,20 +72,21 @@ export class ArticulosService {
           console.log(xhr.status);
           if ( xhr.status === 200 || xhr.status === 201 ) {
             console.log('imagen subida');
-            Swal.fire('Correcto!', 'El artículo se ha creado de manera correcta', 'success');
-            // Swal.fire({
-            //   title: 'Correcto',
-            //   text: 'El artículo se ha eliminado de manera correcta',
-            //   type: 'success',
-            //   confirmButtonColor: '#3085d6',
-            //   cancelButtonColor: '#d33',
-            //   showConfirmButton: true,
-            //   confirmButtonText: 'Ok!'
-            // })
-            // .then((crear) => {
-            //   if (crear) {
-            //   }
-            // });
+            // Swal.fire('Correcto!', 'El artículo se ha creado de manera correcta', 'success');
+            Swal.fire({
+              title: 'Correcto',
+              text: 'El artículo se ha eliminado de manera correcta',
+              type: 'success',
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              showConfirmButton: true,
+              confirmButtonText: 'Ok!'
+            })
+            .then((crear) => {
+              if (crear) {
+                location.reload();
+              }
+            });
             resolve( JSON.parse( xhr.response ) );
           } else {
             console.log('Falló la subida');

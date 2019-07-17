@@ -47,7 +47,6 @@ export class InicioComponent implements OnInit {
     this.artService.subirArchivo(this.imagenSubir, 'blog', titulo, this.mycontent)
     .then(resp => {
       console.log(resp);
-      location.reload();
     })
     .catch(err => {
       console.log('Error en la carga...');
