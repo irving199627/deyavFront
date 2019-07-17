@@ -3,7 +3,7 @@
         <!-- <div class="mt-3"> -->
 
 
-        <input type="text" class="form-control mt-3" placeholder="Buscar Articulo ">
+        <!-- <input type="text" class="form-control mt-3" placeholder="Buscar Articulo "> -->
     </div>
 </div>
 <br>
@@ -18,7 +18,7 @@
             <!-- TARGETA -->
             <div class="card mb-3 cardBlog ">
                 <div class="imagen ">
-                    <img class="card-img-top " [src]="ultimoActivo.img | imagen" alt="Card image cap ">
+                    <img class="card-img-top foto-tarjeta" style="height: 300px;" [src]="ultimoActivo.img | imagen" alt="Card image cap ">
                     <div class="tituloImg ">
                         <h2 class="titulo mx-4 ">{{ ultimoActivo.titulo }}</h2>
                     </div>
@@ -38,12 +38,12 @@
     <h3 style="margin-bottom: 30px; padding-left: 15px;">ULTIMOS ARTICULOS</h3>
     <div class="row pb-5 d-flex justify-content-around">
         <article class="text-justify" *ngFor="let blog of blogs">
-            <div class="card mx-auto mb-4" style="width: 300px;height: 600px;">
-                <img class="img-fluid" [src]="blog.img | imagen" alt="Card image cap">
-                <div class="card-body">
+            <div class="card mx-auto mb-4" style="width: 300px;height: 500px;">
+                <img class="foto-tarjeta" [src]="blog.img | imagen" alt="Card image cap" style="height: 224px;">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{blog.titulo}}</h5>
                     <p class="card-text">{{blog.contenido | truncate}}</p>
-                    <a [routerLink]="[ '/blog', blog._id] ">Continuar leyendo...</a>
+                    <a [routerLink]="[ '/blog', blog._id] " class="btn mt-auto text-left p-0">Continuar leyendo...</a>
                 </div>
             </div>
         </article>
@@ -52,29 +52,33 @@
 
 </section>
 
-
-
-
-
-
-
-
-<!-- 
-<section class="container pt-5">
-    <h3 style="margin-bottom: 30px; padding-left: 15px;">ULTIMOS ARTICULOS</h3>
-    <div class="row pb-5">
-        <article class="col-12 col-sm-12 col-md-6 col-lg-4  text-justify" *ngFor="let blog of blogs">
-            <div class="card mx-auto mb-4" style="width: 300px;height: 500px;">
-                <img class="img-fluid" [src]="blog.img | imagen" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ blog.titulo }}</h5>
-                    <p class="card-text">{{ blog.contenido | truncate }}</p>
-                    <a [routerLink]="[ '/blog', blog._id] ">Continuar leyendo...</a>
-                </div>
-            </div>
-        </article>
-
+<div class="container">
+    <div class="row">
+        <div class="example mx-auto">
+            <nav class="">
+                <ul class="pagination">
+                    <li class="disabled page-item">
+                        <button class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </button>
+                    </li>
+                    <li class="page-item" *ngFor="let blog of blogs; let i = index"><button class="page-link" (click)="paginar(i)">{{i}}</button>
+                    </li>
+                    <!-- <li class="page-item"><a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">4</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">5</a>
+                    </li> -->
+                    <li class="page-item">
+                        <button class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
-
-</section>
- -->
+</div>

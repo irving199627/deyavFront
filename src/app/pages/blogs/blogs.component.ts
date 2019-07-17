@@ -24,4 +24,16 @@ export class BlogsComponent implements OnInit {
     });
   }
 
+  paginar(desde: number) {
+    const desdeP = desde += 9;
+    this.artService.getArticulos(desdeP)
+    .subscribe(resp => {
+      // this.blogs = resp;
+      // this.ultimo = this.artService.limpiarHTML(this.artService.ultimo);
+      // this.ultimoActivo = this.ultimo[this.ultimo.length - 1];
+      this.blogs = resp;
+      this.blogs.reverse();
+    });
+  }
+
 }

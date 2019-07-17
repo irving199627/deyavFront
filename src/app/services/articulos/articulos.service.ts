@@ -25,9 +25,9 @@ export class ArticulosService {
 
   }
 
-  getArticulos() {
+  getArticulos(desde: number = 0) {
     // tslint:disable-next-line:no-shadowed-variable
-    const urlGet = URL_SERVICIOS + '/articulo/blog/';
+    const urlGet = URL_SERVICIOS + '/articulo/blog?desde=' + desde;
     return this.http.get(urlGet)
     .pipe(map((resp: any) => {
       this.ultimo = resp.articulos;

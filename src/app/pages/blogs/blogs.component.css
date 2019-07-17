@@ -122,3 +122,25 @@ input[type=text]:focus {
     border: 0;
     width: 100%;
 }
+
+@supports(object-fit: cover) {
+    .foto-tarjeta {
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+.example .pagination>li>button,
+.example .pagination>li>span {
+    border: 1px solid purple;
+}
+
+.pagination>li>button {
+    color: purple;
+}
+
+.pagination>li.active>button {
+    background: purple;
+    color: #fff;
+}
