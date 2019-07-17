@@ -17,7 +17,7 @@
         <div class="col-sm-10 col-md-10 col-lg-10 mx-auto ">
             <!-- TARGETA -->
             <div class="card mb-3 cardBlog ">
-                <div class="imagen ">
+                <div class="imagen">
                     <img class="card-img-top foto-tarjeta" style="height: 300px;" [src]="ultimoActivo.img | imagen" alt="Card image cap ">
                     <div class="tituloImg ">
                         <h2 class="titulo mx-4 ">{{ ultimoActivo.titulo }}</h2>
@@ -37,7 +37,7 @@
 <section class="container pt-5">
     <h3 style="margin-bottom: 30px; padding-left: 15px;">ULTIMOS ARTICULOS</h3>
     <div class="row pb-5 d-flex justify-content-around">
-        <article class="text-justify" *ngFor="let blog of blogs">
+        <article class="text-justify" *ngFor="let blog of blogs | paginate: { itemsPerPage: 9, currentPage: p }">
             <div class="card mx-auto mb-4" style="width: 300px;height: 500px;">
                 <img class="foto-tarjeta" [src]="blog.img | imagen" alt="Card image cap" style="height: 224px;">
                 <div class="card-body d-flex flex-column">
@@ -47,38 +47,10 @@
                 </div>
             </div>
         </article>
+        <div class="container">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
 
     </div>
 
 </section>
-
-<div class="container">
-    <div class="row">
-        <div class="example mx-auto">
-            <nav class="">
-                <ul class="pagination">
-                    <li class="disabled page-item">
-                        <button class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">«</span>
-                        </button>
-                    </li>
-                    <li class="page-item" *ngFor="let blog of blogs; let i = index"><button class="page-link" (click)="paginar(i)">{{i}}</button>
-                    </li>
-                    <!-- <li class="page-item"><a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">5</a>
-                    </li> -->
-                    <li class="page-item">
-                        <button class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">»</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</div>

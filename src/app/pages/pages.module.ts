@@ -13,6 +13,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TruncatePipe } from '../pipes/truncate.pipe';
 import { ImagenPipe } from '../pipes/imagen.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ImagenPipe } from '../pipes/imagen.pipe';
     CommonModule,
     CKEditorModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     PAGES_ROUTES,
     FormsModule
   ]

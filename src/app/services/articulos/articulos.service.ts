@@ -25,9 +25,14 @@ export class ArticulosService {
 
   }
 
-  getArticulos(desde: number = 0) {
+  getUltimoArticulos() {
+    const url = URL_SERVICIOS + '/articulo/ultimo/blog';
+    return this.http.get(url);
+  }
+
+  getArticulos() {
     // tslint:disable-next-line:no-shadowed-variable
-    const urlGet = URL_SERVICIOS + '/articulo/blog?desde=' + desde;
+    const urlGet = URL_SERVICIOS + '/articulo/blog';
     return this.http.get(urlGet)
     .pipe(map((resp: any) => {
       this.ultimo = resp.articulos;
@@ -36,7 +41,7 @@ export class ArticulosService {
 
 
       this.articles = this.limpiarHTML(resp.articulos);
-      this.articles.pop();
+      this.articles.shift();
       return this.articles;
     }));
   }
@@ -75,7 +80,7 @@ export class ArticulosService {
             // Swal.fire('Correcto!', 'El artículo se ha creado de manera correcta', 'success');
             Swal.fire({
               title: 'Correcto',
-              text: 'El artículo se ha eliminado de manera correcta',
+              text: 'El artículo se ha creado de manera correcta',
               type: 'success',
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',

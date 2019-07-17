@@ -10,29 +10,24 @@ export class BlogsComponent implements OnInit {
   blogs = [];
   ultimo = [];
   ultimoActivo: any = [];
+  p = 0;
+  collection = [];
   constructor( public artService: ArticulosService ) {
+    for (let i = 1; i <= 100; i++) {
+      this.collection.push(`item ${i}`);
+    }
   }
 
   ngOnInit() {
     this.artService.getArticulos()
     .subscribe(resp => {
-      // this.blogs = resp;
-      this.ultimo = this.artService.limpiarHTML(this.artService.ultimo);
-      this.ultimoActivo = this.ultimo[this.ultimo.length - 1];
       this.blogs = resp;
-      this.blogs.reverse();
+      console.log(this.blogs);
     });
-  }
-
-  paginar(desde: number) {
-    const desdeP = desde += 9;
-    this.artService.getArticulos(desdeP)
-    .subscribe(resp => {
-      // this.blogs = resp;
-      // this.ultimo = this.artService.limpiarHTML(this.artService.ultimo);
-      // this.ultimoActivo = this.ultimo[this.ultimo.length - 1];
-      this.blogs = resp;
-      this.blogs.reverse();
+    this.artService.getUltimoArticulos()
+    .subscribe((resp: any) => {
+      this.ultimoActivo = resp.articulos[0];
+      console.log(resp.articulos[0]);
     });
   }
 

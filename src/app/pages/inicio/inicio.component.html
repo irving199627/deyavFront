@@ -61,8 +61,8 @@
         <div class="col">
 
             <form role="form" #myForm="ngForm" accept-charset="" novalidate enctype="multipart/form-data">
-                <input type="text" class="form-control" placeholder="Titulo" #titulo>
-                <input type="file" name="" class="form-control-file" #imagen id="" (change)="seleccionImagen($event.target.files[0])">
+                <input type="text" class="form-control" placeholder="Titulo" #titulo required>
+                <input type="file" name="" class="form-control-file" #imagen id="" (change)="seleccionImagen($event.target.files[0])" required>
                 <br>
                 <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
                     <ckeditor [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
