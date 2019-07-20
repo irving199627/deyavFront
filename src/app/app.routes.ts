@@ -4,11 +4,12 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './login/registro.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { AdminComponent } from './admin/admin.component';
+import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 
 const appRoutes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: 'registro', component: RegistroComponent },
-    { path: 'admin', component: AdminComponent },
+    // { path: 'login', component: LoginComponent },
+    // { path: 'registro', component: RegistroComponent },
+    // { path: 'admin', component: AdminComponent },
     { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 

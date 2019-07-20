@@ -1,25 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticulosService } from '../../services/articulos/articulos.service';
 import Swal from 'sweetalert2';
-import { CargarImagenesService } from '../../services/cargar-imagenes.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-
-
-
-
-// pruebas
-import { DomSanitizer } from '@angular/platform-browser';
-import { Buffer } from 'buffer';
-
+import { CargarImagenesService } from '../../../services/cargar-imagenes.service';
+import { ArticulosService } from '../../../services/articulos/articulos.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  selector: 'app-blog-admin-nuevo',
+  templateUrl: './blog-admin-nuevo.component.html',
+  styleUrls: ['./blog-admin-nuevo.component.css']
 })
-export class InicioComponent implements OnInit {
+export class BlogAdminNuevoComponent implements OnInit {
+  nuevo: string;
   urlImg = '/assets/img/servicios/iconos';
   ckeConfig: any;
+  articuloEditar;
   evento = {
     width: 0,
     height: 0
@@ -33,7 +28,15 @@ export class InicioComponent implements OnInit {
   // imageCropper
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  constructor( public cargaImagenesS: CargarImagenesService, public artService: ArticulosService) { this.mycontent = ``; }
+  constructor(
+    public cargaImagenesS: CargarImagenesService,
+    public artService: ArticulosService,
+    public route: ActivatedRoute,
+    ) { this.mycontent = ``;
+        this.route.params.subscribe(params => {
+          this.nuevo = params.action;
+        });
+  }
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
@@ -50,6 +53,13 @@ imageCropped(event: ImageCroppedEvent) {
 }
 
   ngOnInit() {
+    if (this.nuevo !== 'nuevo') {
+      this.artService.getById(this.nuevo)
+      .subscribe((resp: any) => {
+        this.articuloEditar = resp.articuloBD;
+        console.log(this.articuloEditar);
+      });
+    }
     this.ckeConfig = {
       allowedContent: false,
       forcePasteAsPlainText: true,
@@ -76,12 +86,17 @@ imageCropped(event: ImageCroppedEvent) {
     // this.log += new Date() + "<br />";
     // console.log(this.mycontent);
   }
-  crearBlog(titulo) {
+  crearBlog(titulo, autor) {
     // this.cargaImagenesS.cargarImagenesFirebase(this.imagen64, 'blog');
-    this.artService.subirArchivo(this.imagen64, 'blog', titulo, this.mycontent)
+    this.artService.subirArchivo(this.imagen64, 'blog', titulo, this.mycontent, autor)
     .subscribe( resp => {
       console.log(resp);
     });
+  }
+
+  actualizarBlog(forma) {
+    console.log(forma);
+    this.artService.actualizarArticulo('blog', forma, this.id);
   }
 
   // seleccionImagen( archivo: File ) {
@@ -105,5 +120,6 @@ imageCropped(event: ImageCroppedEvent) {
   //   reader.onloadend = () => this.imagenTemp = reader.result.toString();
 
   // }
+
 
 }

@@ -130,17 +130,3 @@ input[type=text]:focus {
         object-position: center center;
     }
 }
-
-.example .pagination>li>button,
-.example .pagination>li>span {
-    border: 1px solid purple;
-}
-
-.pagination>li>button {
-    color: purple;
-}
-
-.pagination>li.active>button {
-    background: purple;
-    color: #fff;
-}

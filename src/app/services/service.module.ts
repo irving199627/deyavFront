@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UsuariosService } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 import { ArticulosService } from './articulos/articulos.service';
+import { CargarImagenesService } from './cargar-imagenes.service';
 
 @NgModule({
   declarations: [],
@@ -12,7 +13,8 @@ import { ArticulosService } from './articulos/articulos.service';
   ],
   providers: [
     UsuariosService,
-    ArticulosService
+    ArticulosService,
+    CargarImagenesService
   ]
 })
 export class ServiceModule { }

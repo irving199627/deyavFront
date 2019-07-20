@@ -1,19 +1,19 @@
 import { RouterModule, Routes } from '@angular/router';
-import { PagesComponent } from './pages.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { AboutComponent } from './about/about.component';
-import { BlogsComponent } from './blogs/blogs.component';
-import { BlogComponent } from './blogs/blog.component';
 
-const PagesRoutes: Routes = [
-    { path: '',
-     component: PagesComponent,
+import { AdminComponent } from './admin.component';
+import { BlogAdminComponent } from './pages/blog-admin/blog-admin.component';
+import { BlogAdminNuevoComponent } from './pages/blog-admin/blog-admin-nuevo.component';
+
+const AdminRoutes: Routes = [
+    { path: 'admin',
+     component: AdminComponent,
     //  canActivate: [ LoginGuardGuard ],
      children: [
-        { path: 'inicio', component: InicioComponent, data: { titulo: 'inicio' } },
+        // { path: 'inicio', component: InicioComponent, data: { titulo: 'inicio' } },
         // { path: 'about', component: AboutComponent },
-        { path: 'blog', component: BlogsComponent },
-        { path: 'blog/:id', component: BlogComponent },
+        { path: 'blog', component: BlogAdminComponent },
+        { path: 'blog/:action', component: BlogAdminNuevoComponent },
+        // { path: 'blog/:id', component: BlogComponent },
         // { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
         // { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },
         // { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
@@ -26,9 +26,9 @@ const PagesRoutes: Routes = [
         // { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimieto de Médicos' } },
         // { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizar Médico' } },
         // { path: '**', pathMatch: 'full', component: NotFoundComponent },
-        { path: '', redirectTo: '/about', pathMatch: 'full' },
+        // { path: '', redirectTo: '/about', pathMatch: 'full' },
      ]
      },
 ];
 
-export const PAGES_ROUTES = RouterModule.forChild( PagesRoutes );
+export const ADMIN_ROUTES = RouterModule.forChild( AdminRoutes );

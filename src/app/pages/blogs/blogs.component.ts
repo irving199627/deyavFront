@@ -13,9 +13,6 @@ export class BlogsComponent implements OnInit {
   p = 0;
   collection = [];
   constructor( public artService: ArticulosService ) {
-    for (let i = 1; i <= 100; i++) {
-      this.collection.push(`item ${i}`);
-    }
   }
 
   ngOnInit() {
@@ -28,6 +25,11 @@ export class BlogsComponent implements OnInit {
     .subscribe((resp: any) => {
       this.ultimoActivo = this.artService.limpiarHTML(resp.articulos)[0];
     });
+  }
+
+  change(evento) {
+    this.p = evento;
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
 }

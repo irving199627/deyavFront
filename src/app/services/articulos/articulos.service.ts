@@ -30,6 +30,15 @@ export class ArticulosService {
     return this.http.get(url);
   }
 
+  getTodos() {
+    const urlGet = URL_SERVICIOS + '/articulo/blog';
+    return this.http.get(urlGet)
+    .pipe(map((resp: any) => {
+      this.articles = this.limpiarHTML(resp.articulos);
+      return this.articles;
+    }));
+  }
+
   getArticulos() {
     // tslint:disable-next-line:no-shadowed-variable
     const urlGet = URL_SERVICIOS + '/articulo/blog';
@@ -56,6 +65,20 @@ export class ArticulosService {
     }));
   }
 
+  subirArchivo( archivo, tipo: string, titulo, contenido, autor) {
+      const url = URL_SERVICIOS + `/articulo/${tipo}`;
+      return this.http.post(url, {
+        img: archivo,
+        contenido,
+        titulo,
+        autor
+      });
+  }
+
+  actualizarArticulo(tipo, body, id) {
+    const url = `${URL_SERVICIOS}/articulo/${tipo}/${id}`;
+  }
+
   // crearArticulo(body) {
   //   let url2 = URL_SERVICIOS;
   //   url2 += '/articulo/blog/';
@@ -65,49 +88,49 @@ export class ArticulosService {
   //   }));
   // }
 
-  subirArchivo( archivo: File, tipo: string, titulo, contenido) {
-    return new Promise( (resolve, reject) => {
-      const formData = new FormData();
-      const xhr = new XMLHttpRequest();
-      formData.append('imagen', archivo, archivo.name);
-      formData.append('titulo', titulo);
-      formData.append('contenido', contenido);
-      xhr.onreadystatechange = () => {
-        if ( xhr.readyState === 4 ) {
-          console.log(xhr.status);
-          if ( xhr.status === 200 || xhr.status === 201 ) {
-            console.log('imagen subida');
-            // Swal.fire('Correcto!', 'El artículo se ha creado de manera correcta', 'success');
-            Swal.fire({
-              title: 'Correcto',
-              text: 'El artículo se ha creado de manera correcta',
-              type: 'success',
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              showConfirmButton: true,
-              confirmButtonText: 'Ok!'
-            })
-            .then((crear) => {
-              if (crear) {
-                location.reload();
-              }
-            });
-            resolve( JSON.parse( xhr.response ) );
-          } else {
-            console.log('Falló la subida');
-            reject( xhr.response );
-          }
-        }
-      };
+  // subirArchivo( archivo: File, tipo: string, titulo, contenido) {
+  //   return new Promise( (resolve, reject) => {
+  //     const formData = new FormData();
+  //     const xhr = new XMLHttpRequest();
+  //     formData.append('imagen', archivo, archivo.name);
+  //     formData.append('titulo', titulo);
+  //     formData.append('contenido', contenido);
+  //     xhr.onreadystatechange = () => {
+  //       if ( xhr.readyState === 4 ) {
+  //         console.log(xhr.status);
+  //         if ( xhr.status === 200 || xhr.status === 201 ) {
+  //           console.log('imagen subida');
+  //           // Swal.fire('Correcto!', 'El artículo se ha creado de manera correcta', 'success');
+  //           Swal.fire({
+  //             title: 'Correcto',
+  //             text: 'El artículo se ha creado de manera correcta',
+  //             type: 'success',
+  //             confirmButtonColor: '#3085d6',
+  //             cancelButtonColor: '#d33',
+  //             showConfirmButton: true,
+  //             confirmButtonText: 'Ok!'
+  //           })
+  //           .then((crear) => {
+  //             if (crear) {
+  //               location.reload();
+  //             }
+  //           });
+  //           resolve( JSON.parse( xhr.response ) );
+  //         } else {
+  //           console.log('Falló la subida');
+  //           reject( xhr.response );
+  //         }
+  //       }
+  //     };
 
-      // let url = URL_SERVICIOS + '/upload/' + tipo + '/' + id;
-      let url2 = URL_SERVICIOS;
-      url2 += '/articulo/' + tipo;
+  //     // let url = URL_SERVICIOS + '/upload/' + tipo + '/' + id;
+  //     let url2 = URL_SERVICIOS;
+  //     url2 += '/articulo/' + tipo;
 
-      xhr.open('POST', url2, true);
-      xhr.send( formData );
-    });
-  }
+  //     xhr.open('POST', url2, true);
+  //     xhr.send( formData );
+  //   });
+  // }
 
   getById(id: string) {
     const urlId = URL_SERVICIOS + '/articulo/blog/' + id;

@@ -8,8 +8,21 @@ section img {
     border-top-right-radius: 10px;
 }
 
-.centro {
-    margin: auto;
+.btn {
+    background-color: none;
+    border-color: none;
+    color: #6D1A5E;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background-color: none;
+    border-color: none;
+    color: #6D1A5E;
+    font-size: 1em;
+    font-weight: 700;
+    transition: 0.2s;
 }
 
 .card {
@@ -23,8 +36,13 @@ section img {
 }
 
 .autor {
-    color: var(--morado-ligero);
+    color: #B583AD;
     font-weight: 600;
+}
+
+.img-articulo {
+    height: 100%;
+    width: auto;
 }
 
 @supports(object-fit: cover) {
@@ -32,11 +50,5 @@ section img {
         width: 100%;
         object-fit: cover;
         object-position: center center;
-    }
-}
-
-@media (min-width: 700px) {
-    article p {
-        column-count: 2;
     }
 }

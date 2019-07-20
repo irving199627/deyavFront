@@ -9,11 +9,12 @@ import { FooterComponent } from '../components/share/footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogComponent } from './blogs/blog.component';
-import { CKEditorModule } from 'ng2-ckeditor';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TruncatePipe } from '../pipes/truncate.pipe';
-import { ImagenPipe } from '../pipes/imagen.pipe';
+
+// import { TruncatePipe } from '../pipes/truncate.pipe';
+// import { ImagenPipe } from '../pipes/imagen.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PipesModule } from '../pipes/pipes.module';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +25,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AboutComponent,
     BlogsComponent,
     BlogComponent,
-    TruncatePipe,
-    ImagenPipe
+    // TruncatePipe,
+    // ImagenPipe
   ],
   exports: [
     PagesComponent,
@@ -35,11 +36,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
   ],
   imports: [
     CommonModule,
-    CKEditorModule,
-    ReactiveFormsModule,
     NgxPaginationModule,
+    PipesModule,
     PAGES_ROUTES,
-    FormsModule
   ]
 })
 export class PagesModule { }

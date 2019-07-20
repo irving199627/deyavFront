@@ -56,29 +56,3 @@
 </div>
 <div class="container">
 </div> -->
-<div class="container">
-    <div class="row">
-        <div class="col">
-
-            <form role="form" #myForm="ngForm" accept-charset="" novalidate enctype="multipart/form-data">
-                <input type="text" class="form-control" placeholder="Titulo" #titulo required>
-                <input type="file" name="" class="form-control-file" #imagen id="" (change)="seleccionImagen($event.target.files[0])" required>
-                <br>
-                <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
-                    <ckeditor [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
-                    </ckeditor>
-                    <div *ngIf="myckeditor.invalid && myckeditor.touched" class="help-block">Required field.</div>
-                </div>
-                <!-- <div [innerHTML]="mycontent" id="txt"></div>
-                <p>{{mycontent}}</p> -->
-                <button [disabled]="myForm.invalid" class="btn btn-primary" (click)="crearBlog(titulo.value)">Guardar</button>
-            </form>
-        </div>
-
-        <div class="col">
-            <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
-            <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;">
-        </div>
-    </div>
-
-</div>
