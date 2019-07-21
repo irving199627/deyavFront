@@ -4,15 +4,15 @@
 
 export const environment = {
   production: true,
-  firebase: {
-    apiKey: 'AIzaSyDDT5dgfvmeLAnEA-C4mCY2r1oJRJtSWjY',
-    authDomain: 'deyav-75a41.firebaseapp.com',
-    databaseURL: 'https://deyav-75a41.firebaseio.com',
-    projectId: 'deyav-75a41',
-    storageBucket: 'deyav-75a41.appspot.com',
-    messagingSenderId: '280586739063',
-    appId: '1:280586739063:web:b786eed2e99f6363'
-  }
+  // firebase: {
+  //   apiKey: 'AIzaSyDDT5dgfvmeLAnEA-C4mCY2r1oJRJtSWjY',
+  //   authDomain: 'deyav-75a41.firebaseapp.com',
+  //   databaseURL: 'https://deyav-75a41.firebaseio.com',
+  //   projectId: 'deyav-75a41',
+  //   storageBucket: 'deyav-75a41.appspot.com',
+  //   messagingSenderId: '280586739063',
+  //   appId: '1:280586739063:web:b786eed2e99f6363'
+  // }
 };
 
 /*

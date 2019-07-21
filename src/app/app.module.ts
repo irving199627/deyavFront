@@ -13,9 +13,6 @@ import { RegistroComponent } from './login/registro.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { AdminComponent } from './admin/admin.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 
@@ -44,8 +41,6 @@ import { APP_ROUTES } from './app.routes';
     ReactiveFormsModule,
     CKEditorModule,
     ImageCropperModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
   ],
   exports: [
   ],
