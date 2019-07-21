@@ -27,15 +27,5 @@
     </div>
     <p class="mt-2 pl-3 autor">Autor: Deyanira Trinidad Alvarez Villajuana</p>
     <article>
-        <p class="text-justify">{{articulo.contenido}}</p>
+        <p class="text-justify" [innerHTML]="articulo.contenido"></p>
     </article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <button class="btn btn-outline-danger" (click)="eliminarArticulo()"><i class="fa fa-trash"></i></button>
-            </div>
-            <div class="col-lg-6">
-                <a [routerLink]="['/blog']">regresar</a>
-            </div>
-        </div>
-    </div>

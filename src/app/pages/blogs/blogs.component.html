@@ -17,13 +17,13 @@
                     <div class="imagen">
                         <img class="card-img-top foto-tarjeta" style="height: 300px;" [src]="ultimoActivo.img | imagen" alt="Card image cap ">
                         <div class="tituloImg ">
-                            <h2 class="titulo mx-4 ">{{ ultimoActivo.titulo }}</h2>
+                            <h2 class="titulo mx-4 ">{{ ultimoActivo.titulo | truncate: 40 }}</h2>
                         </div>
                     </div>
                     <div class="card-body ">
                         <p class="card-text cuerpo ">{{ultimoActivo.contenido | truncate }}</p>
                         <p class="card-text cuerpo "><small>
-                          <a [routerLink]="[ '/blog', ultimoActivo._id] ">Continuar leyendo...</a>
+                          <a [routerLink]="[ '/blog', ultimoActivo._id] " target="_blank">Continuar leyendo...</a>
                         </small></p>
                     </div>
                 </div>
@@ -38,9 +38,9 @@
                 <div class="card mx-auto mb-4" style="width: 300px;height: 500px;">
                     <img class="foto-tarjeta" [src]="blog.img " alt="Card image cap" style="height: 224px;">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{blog.titulo}}</h5>
-                        <p class="card-text">{{blog.contenido }}</p>
-                        <a [routerLink]="[ '/blog', blog._id] " class="btn mt-auto text-left p-0">Continuar leyendo...</a>
+                        <h5 class="card-title">{{blog.titulo | truncate: 40}}</h5>
+                        <p class="card-text">{{blog.contenido | truncate}}</p>
+                        <a [routerLink]="[ '/blog', blog._id] " class="btn mt-auto text-left p-0" target="_blank">Continuar leyendo...</a>
                     </div>
                 </div>
             </article>

@@ -58,11 +58,7 @@ export class ArticulosService {
   eliminarArticulo( id: string) {
     const url = URL_SERVICIOS + '/articulo/blog/' + id;
 
-    return this.http.delete(url)
-    .pipe(map((resp) => {
-      Swal.fire('Correcto!', 'El artículo se ha eliminado de manera correcta', 'success');
-      this.router.navigate(['/blog/']);
-    }));
+    return this.http.delete(url);
   }
 
   subirArchivo( archivo, tipo: string, titulo, contenido, autor) {
@@ -77,6 +73,7 @@ export class ArticulosService {
 
   actualizarArticulo(tipo, body, id) {
     const url = `${URL_SERVICIOS}/articulo/${tipo}/${id}`;
+    return this.http.put(url, body);
   }
 
   // crearArticulo(body) {

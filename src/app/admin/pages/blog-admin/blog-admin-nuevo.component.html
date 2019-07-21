@@ -2,14 +2,30 @@
     <div class="row m-4">
         <div class="col-lg-6">
 
-            <form role="form" #myForm="ngForm" accept-charset="" novalidate enctype="multipart/form-data">
-
-                <input type="text" class="form-control" placeholder="Titulo" #titulo required minlength="2" maxlength="30">
-                <input type="text" class="form-control" placeholder="Autor" #autor required minlength="2" maxlength="30">
-                <br>
+            <form role="form" #myForm="ngForm" accept-charset="" ngValidate enctype="multipart/form-data">
+                <!-- <input type="text" class="form-control" placeholder="Titulo" #titulo required minlength="2" maxlength="30"> -->
+                <label for="ValidarTitulo">Título</label>
+                <input autocomplete="off" #tituloValidator="ngModel" [(ngModel)]="titulo" name="titulo" type="text" class="form-control" [ngClass]="{'is-invalid': tituloValidator.invalid, 'is-valid': tituloValidator.valid}" id="ValidarTitulo" placeholder="Titulo" required>
+                <div class="invalid-feedback" *ngIf="tituloValidator.invalid">
+                    El campo titulo es obligatorio.
+                </div>
+                <!-- <input type="text" class="form-control" placeholder="Autor" #autor required minlength="2" maxlength="30"> -->
+                <label for="ValidarAutor">Autor</label>
+                <input autocomplete="off" #autorValidator="ngModel" [(ngModel)]="autor" name="autor" type="text" class="form-control" [ngClass]="{'is-invalid': autorValidator.invalid, 'is-valid': autorValidator.valid}" id="ValidarAutor" placeholder="Autor" required>
+                <div class="invalid-feedback" *ngIf="autorValidator.invalid">
+                    El campo autor es obligatorio.
+                </div>
                 <!-- <input type="file" name="" class="form-control-file" #imagen id="" (change)="seleccionImagen($event.target.files[0])" required> -->
-                <input type="file" (change)="fileChangeEvent($event)" />
+                <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
+                <div class="custom-file">
+                    <input #imagenValidator="ngModel" [(ngModel)]="articuloEditar.img" name="img" type="file" class="custom-file-input" [ngClass]="{'is-invalid': imagenValidator.invalid, 'is-valid': imagenValidator.valid}" id="imagen" required (change)="fileChangeEvent($event)">
+                    <label class="custom-file-label" for="imagen">Subir Archivo</label>
+                    <div class="invalid-feedback" *ngIf="imagenValidator.invalid">
+                        El campo imágen es obligatorio.
+                    </div>
+                </div>
                 <br>
+
                 <!-- <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper> -->
                 <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="imageCropped($event)"></image-cropper>
                 <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
@@ -19,7 +35,7 @@
                 </div>
                 <!-- <div [innerHTML]="mycontent" id="txt"></div>
             <p>{{mycontent}}</p> -->
-                <button [disabled]="myForm.invalid" class="btn btn-primary" (click)="crearBlog(titulo.value, autor.value)">Guardar</button>
+                <button [disabled]="myForm.invalid" class="btn btn-primary" (click)="crearBlog()">Guardar</button>
             </form>
         </div>
 
@@ -37,11 +53,32 @@
         <div class="col-lg-6">
 
             <form role="form" #myForm="ngForm" accept-charset="" novalidate enctype="multipart/form-data">
-                <input type="text" [(ngModel)]="articuloEditar.titulo" name="titulo" class="form-control" placeholder="Titulo" #titulo required minlength="2" maxlength="30">
-                <input type="text" [(ngModel)]="articuloEditar.autor" name="autor" class="form-control" placeholder="Autor" #titulo required minlength="2" maxlength="30">
+                <!-- <input type="text" [(ngModel)]="articuloEditar.titulo" name="titulo" class="form-control" placeholder="Titulo" #titulo required minlength="2" maxlength="30"> -->
+                <!-- <input type="text" [(ngModel)]="articuloEditar.autor" name="autor" class="form-control" placeholder="Autor" #titulo required minlength="2" maxlength="30"> -->
+                <label for="ValidarTitulo">Título</label>
+                <input autocomplete="off" #tituloValidator="ngModel" [(ngModel)]="articuloEditar.titulo" name="titulo" type="text" class="form-control" [ngClass]="{'is-invalid': tituloValidator.invalid, 'is-valid': tituloValidator.valid}" id="ValidarTitulo" placeholder="Titulo"
+                    required>
+                <div class="invalid-feedback" *ngIf="tituloValidator.invalid">
+                    El campo titulo es obligatorio.
+                </div>
+                <!-- <input type="text" class="form-control" placeholder="Autor" #autor required minlength="2" maxlength="30"> -->
+                <label for="ValidarAutor">Autor</label>
+                <input autocomplete="off" #autorValidator="ngModel" [(ngModel)]="articuloEditar.autor" name="autor" type="text" class="form-control" [ngClass]="{'is-invalid': autorValidator.invalid, 'is-valid': autorValidator.valid}" id="ValidarAutor" placeholder="Autor"
+                    required>
+                <div class="invalid-feedback" *ngIf="autorValidator.invalid">
+                    El campo autor es obligatorio.
+                </div>
+                <!-- <input type="file" name="" class="form-control-file" #imagen id="" (change)="seleccionImagen($event.target.files[0])" required> -->
+                <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
+                <br>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="imagen" required (change)="fileChangeEvent($event)">
+                    <label class="custom-file-label" for="imagen">Subir Archivo</label>
+                </div>
                 <br>
                 <!-- <input type="file" name="" class="form-control-file" #imagen id="" (change)="seleccionImagen($event.target.files[0])" required> -->
-                <input type="file" (change)="fileChangeEvent($event)" />
+                <!-- <input type="file" (change)="fileChangeEvent($event)" id="imagen" /> -->
+
                 <br>
                 <!-- <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper> -->
                 <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="imageCropped($event)"></image-cropper>
@@ -58,8 +95,8 @@
 
         <div class="col-lg-6" style="width: 300px; max-height: 920px;">
             <p>El tamaño de la imagen es: {{evento.width}} px de ancho y {{evento.height}} px de alto</p>
-            <img [src]="articuloEditar.img | imagen" *ngIf="!croppedImage"/>
-            <img  [src]="croppedImage" *ngIf="croppedImage" />
+            <img class="img-fluid" [src]="articuloEditar.img | imagen" *ngIf="!croppedImage" />
+            <img [src]="croppedImage" *ngIf="croppedImage" />
             <!-- <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
       <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;"> -->
         </div>
