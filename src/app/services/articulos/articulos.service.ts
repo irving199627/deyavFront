@@ -26,12 +26,12 @@ export class ArticulosService {
   }
 
   getUltimoArticulos() {
-    const url = URL_SERVICIOS + '/articulo/ultimo/blog';
+    const url = URL_SERVICIOS + '/blog/ultimo';
     return this.http.get(url);
   }
 
   getTodos() {
-    const urlGet = URL_SERVICIOS + '/articulo/blog';
+    const urlGet = URL_SERVICIOS + '/blog';
     return this.http.get(urlGet)
     .pipe(map((resp: any) => {
       this.articles = this.limpiarHTML(resp.articulos);
@@ -41,7 +41,7 @@ export class ArticulosService {
 
   getArticulos() {
     // tslint:disable-next-line:no-shadowed-variable
-    const urlGet = URL_SERVICIOS + '/articulo/blog';
+    const urlGet = URL_SERVICIOS + '/blog';
     return this.http.get(urlGet)
     .pipe(map((resp: any) => {
       this.ultimo = resp.articulos;
@@ -56,14 +56,14 @@ export class ArticulosService {
   }
 
   eliminarArticulo( id: string) {
-    const url = URL_SERVICIOS + '/articulo/blog/' + id;
+    const url = URL_SERVICIOS + '/blog/' + id;
 
     return this.http.delete(url);
   }
 
   subirArchivo( archivo, tipo: string, titulo, contenido, autor) {
       console.log(tipo, titulo, contenido, autor);
-      const url = URL_SERVICIOS + `/articulo/${tipo}`;
+      const url = URL_SERVICIOS + `/${tipo}`;
       return this.http.post(url, {
         img: archivo,
         contenido,
@@ -73,7 +73,7 @@ export class ArticulosService {
   }
 
   actualizarArticulo(tipo, body, id) {
-    const url = `${URL_SERVICIOS}/articulo/${tipo}/${id}`;
+    const url = `${URL_SERVICIOS}/${tipo}/${id}`;
     return this.http.put(url, body);
   }
 
@@ -131,7 +131,7 @@ export class ArticulosService {
   // }
 
   getById(id: string) {
-    const urlId = URL_SERVICIOS + '/articulo/blog/' + id;
+    const urlId = URL_SERVICIOS + '/blog/' + id;
     return this.http.get(urlId)
     .pipe(map( (resp) => {
       return resp;
