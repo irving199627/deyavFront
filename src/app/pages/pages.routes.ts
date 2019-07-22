@@ -26,7 +26,7 @@ const PagesRoutes: Routes = [
         // { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimieto de Médicos' } },
         // { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizar Médico' } },
         // { path: '**', pathMatch: 'full', component: NotFoundComponent },
-        { path: '', redirectTo: '/blog', pathMatch: 'full' },
+        { path: '', redirectTo: '/inicio', pathMatch: 'full' },
      ]
      },
 ];

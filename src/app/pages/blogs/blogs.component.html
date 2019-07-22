@@ -1,54 +1,71 @@
-<div class="container">
-    <div class="row">
-        <!-- <div class="mt-3"> -->
+<div class="animated fadeIn fast">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="mt-3"> -->
 
 
-        <!-- <input type="text" class="form-control mt-3" placeholder="Buscar Articulo "> -->
+            <!-- <input type="text" class="form-control mt-3" placeholder="Buscar Articulo "> -->
+        </div>
     </div>
-</div>
-<br>
+    <br>
 
-<div *ngIf="ultimoActivo">
+    <div *ngIf="ultimoActivo">
 
-    <div class="container pt-3 ">
-        <div class="row pt-4 ">
-            <div class="col-sm-10 col-md-10 col-lg-10 mx-auto ">
-                <div class="card mb-3 cardBlog ">
-                    <div class="imagen">
-                        <img class="card-img-top foto-tarjeta" style="height: 300px;" [src]="ultimoActivo.img | imagen" alt="Card image cap ">
-                        <div class="tituloImg ">
-                            <h2 class="titulo mx-4 ">{{ ultimoActivo.titulo | truncate: 40 }}</h2>
+        <!-- <div class="container pt-3 ">
+            <div class="row pt-4 ">
+                <div class="col-sm-10 col-md-10 col-lg-10 mx-auto ">
+                    <div class="card mb-3 cardBlog ">
+                        <div class="imagen">
+                            <img class="card-img-top foto-tarjeta" style="height: 300px;" [src]="ultimoActivo.img | imagen" alt="Card image cap ">
+                            <div class="tituloImg ">
+                                <h2 class="titulo mx-4 titulos">{{ ultimoActivo.titulo | truncate: 40 }}</h2>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body ">
-                        <p class="card-text cuerpo ">{{ultimoActivo.contenido | truncate }}</p>
-                        <p class="card-text cuerpo "><small>
+                        <div class="card-body ">
+                            <p class="card-text textoGeneral ">{{ultimoActivo.contenido | truncate }}</p>
+                            <p class="card-text"><small>
                           <a [routerLink]="[ '/blog', ultimoActivo._id] ">Continuar leyendo...</a>
                         </small></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> -->
+        <div class="row mt-5 container mx-auto">
+            <article class="text-justify col-12">
+                <div class="card mb-3">
+                    <div class="text-center d-flex justify-content-center aling-content-center" id="card-primary">
+                        <img class="card-img-top" [src]="ultimoActivo.img | imagen" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title titulos">{{ ultimoActivo.titulo | truncate: 40 }}</h5>
+                        <p class="card-text textoGeneral">{{ultimoActivo.contenido | truncate }}</p>
 
-    <section class="container pt-5">
-        <h3 style="margin-bottom: 30px; padding-left: 15px;">ULTIMOS ARTICULOS</h3>
-        <div class="row pb-5 d-flex justify-content-around">
-            <article class="text-justify" *ngFor="let blog of blogs | paginate: { itemsPerPage: 9, currentPage: p }">
-                <div class="card mx-auto mb-4" style="width: 300px;height: 500px;">
-                    <img class="foto-tarjeta" [src]="blog.img | imagen" alt="Card image cap" style="height: 224px;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{blog.titulo | truncate: 40}}</h5>
-                        <p class="card-text cuerpo">{{blog.contenido | truncate}}</p>
-                        <a class="cuerpo" [routerLink]="[ '/blog', blog._id] " class="btn mt-auto text-left p-0">Continuar leyendo...</a>
+                        <a href="#" class="btn mt-auto text-left p-0" [routerLink]="[ '/blog', ultimoActivo._id] ">Continuar leyendo...</a>
                     </div>
                 </div>
             </article>
         </div>
 
-        <div class="col-lg-6 mx-auto">
-            <pagination-controls (pageChange)="change($event)" responsive="true" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
-        </div>
+        <section class="container pt-5">
+            <h3 style="margin-bottom: 30px; padding-left: 15px;">ULTIMOS ARTICULOS</h3>
+            <div class="row pb-5 d-flex justify-content-around">
+                <article class="text-justify" *ngFor="let blog of blogs | paginate: { itemsPerPage: 9, currentPage: p }">
+                    <div class="card mx-auto mb-4" style="width: 300px;height: 500px;">
+                        <img class="foto-tarjeta" [src]="blog.img | imagen" alt="Card image cap" style="height: 224px;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title titulos">{{blog.titulo | truncate: 40}}</h5>
+                            <p class="card-text textoGeneral">{{blog.contenido | truncate}}</p>
+                            <a class="cuerpo" [routerLink]="[ '/blog', blog._id] " class="btn mt-auto text-left p-0">Continuar leyendo...</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
 
-    </section>
+            <div class="col-lg-6 mx-auto">
+                <pagination-controls (pageChange)="change($event)" responsive="true" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </div>
+
+        </section>
+    </div>
 </div>

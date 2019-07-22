@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios/usuarios.service';
+import { Usuario } from '../models/usuario.model';
+import { Router } from '@angular/router';
 
 declare const gapi: any;
 @Component({
@@ -10,8 +12,10 @@ declare const gapi: any;
 })
 export class LoginComponent implements OnInit {
   auth2: any;
+  email: string;
   constructor(
-    public usuarioService: UsuariosService
+    public usuarioService: UsuariosService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -43,7 +47,9 @@ export class LoginComponent implements OnInit {
     if (forma.invalid) {
       return;
     }
-    console.log(forma);
+    const usuario = new Usuario(null, null, forma.value.email, forma.value.password);
+    this.usuarioService.login(usuario, forma.value.recuerdame)
+    .subscribe( correcto => this.router.navigate(['/inicio']));
   }
 
 

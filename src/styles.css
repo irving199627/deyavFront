@@ -63,13 +63,6 @@
     /* remove underline from anchors */
 }
 
-@font-face {
-    font-family: 'copperplate Gothic';
-    font-style: normal;
-    font-weight: normal;
-    src: url('assets/fonts/CopperplateGothicBoldV1/CopperplateGothicBoldV1.woff') format('woff');
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -95,17 +88,32 @@ body {
 }
 
 @font-face {
-    font-family: 'the bold font';
+    font-family: 'copperplate Gothic';
     font-style: normal;
     font-weight: normal;
-    src: url('assets/fonts/theboldfont.ttf') format('ttf');
+    src: url('assets/fonts/CopperplateGothicBoldV1/CopperplateGothicBoldV1.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'theboldfont';
+    font-style: normal;
+    font-weight: normal;
+    src: url('assets/fonts/theboldfont.woff') format('woff');
 }
 
 .navbarText {
     font-family: 'copperplate Gothic';
 }
 
+.textoGeneral {
+    font-family: 'Century Gothic Regular';
+    font-size: .9em;
+}
 
-/* .mb-3, .my-3 {
-    margin-bottom: 0 !important;
-} */
+.titulos {
+    font-family: 'theboldfont';
+}
+
+.pointer {
+    cursor: pointer;
+}

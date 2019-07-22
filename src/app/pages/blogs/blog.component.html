@@ -20,12 +20,12 @@
     </div>
 </section> -->
 
-<section class="container pt-5">
-    <h3 class="pl-3">{{articulo.titulo}}</h3>
+<section class="container pt-5 animated fadeIn fast">
+    <h3 class="pl-3 titulos">{{articulo.titulo}}</h3>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" style="height: 400px; background-color: #B583AD;">
         <img [src]="articulo.img | imagen " alt="" class="img-articulo">
     </div>
-    <p class="mt-2 pl-3 autor">Autor: Deyanira Trinidad Alvarez Villajuana</p>
+    <p class="mt-2 pl-3 autor">{{articulo.autor}}</p>
     <article>
-        <p class="text-justify" [innerHTML]="articulo.contenido"></p>
+        <p class="text-justify textoGeneral" [innerHTML]="articulo.contenido"></p>
     </article>

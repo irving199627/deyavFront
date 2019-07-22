@@ -1,3 +1,9 @@
+:root {
+    --fondo-linear: linear-gradient(90deg, #6D1A5E, #1480C2);
+    --morado-ligero: #B583AD;
+    --morado: #6D1A5E;
+}
+
 footer {
     /* bottom: 0; */
     clear: both;
@@ -13,4 +19,35 @@ footer {
 
 .container {
     padding: 1%;
+}
+
+.fondo-linear {
+    background: linear-gradient(90deg, #6D1A5E, #1480C2);
+}
+
+#mensaje {
+    resize: none;
+}
+
+.btn-submit {
+    max-width: 150px;
+    font-weight: 600;
+    /* font-family: "TheBoldFont"; */
+    color: #6D1A5E !important;
+    border-radius: 10px !important;
+}
+
+.btn-whatsapp {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #6D1A5E;
+    padding: 15px;
+    border-radius: 100%;
+    color: #fff;
+    z-index: 10;
+}
+
+.btn-whatsapp:hover {
+    color: #fff !important;
 }

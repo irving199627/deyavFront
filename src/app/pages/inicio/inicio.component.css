@@ -1,46 +1,79 @@
-/* .card {
-    margin-top: 3% !important;
-    margin-bottom: 4% !important;
+:root {
+    --morado-ligero: #B583AD;
+    --morado: #6D1A5E;
+    --fondo-linear: linear-gradient(90deg, #6D1A5E, #1480C2);
 }
 
-.fondoServicios {
-    background-image: url('/assets/img/servicios/iconos/cuadro de servicios.png');
+.fondo-degradado {
     background-size: cover;
-    color: #ffffff;
-    text-align: center;
-    padding-top: 4%;
-    padding-bottom: 4%;
+    background-position: center;
 }
 
-.imgCuad {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10%;
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16/9 ratio */
+    padding-top: 30px;
+    /* IE6 workaround*/
+    height: 0;
+    overflow: hidden;
 }
 
-.imgMVV {
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "theboldfont";
+    color: #6D1A5E;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.btn-borde-blanco {
+    border: 3px #fff solid;
+    border-radius: 15px;
+    display: inline-block;
+    color: #fff;
+    font-weight: 500;
+    max-width: 400px;
     margin: auto;
-    width: 200px;
-    height: 200px;
 }
 
-.card {
-    margin-top: 20%;
-    padding-top: 2%;
-    margin-bottom: 20%;
-    text-align: justify;
+.btn-borde-blanco:hover {
+    transition: 0.2s;
+    background-color: #fff !important;
+    color: #6D1A5E;
 }
-
-#valores {
-    width: 250px;
-}
-
-.textCentury {
-    font-family: 'Century Gothic Regular';
-    font-size: .9em;
-} */
 
 .img-slider {
     -webkit-filter: brightness(70%);
     filter: brightness(70%);
+}
+
+#casos-exito {
+    position: relative;
+}
+
+#img-mariposa {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.fondo-linear {
+    background: linear-gradient(90deg, #6D1A5E, #1480C2);
 }

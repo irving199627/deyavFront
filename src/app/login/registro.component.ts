@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Usuario } from '../models/usuario.model';
+import { UsuariosService } from '../services/usuarios/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -11,7 +13,10 @@ export class RegistroComponent implements OnInit {
   forma: FormGroup;
   email = `^([a-zA-Z0-9.!#$%&'*+/=?{|}~-]+@hotmail?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)` +
   `|[a-zA-Z0-9.!#$%&'*+/=?{|}~-]+@gmail(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$`;
-  constructor() { }
+  constructor(
+    public usuariosService: UsuariosService,
+    private router: Router
+    ) { }
 
 
   sonIguales(campo1: string, campo2: string) {
@@ -41,13 +46,14 @@ export class RegistroComponent implements OnInit {
         };
       }
     };
+
   }
 
   ngOnInit() {
     this.forma = new FormGroup({
       nombre: new FormControl( null, Validators.required ),
       apellidos: new FormControl( null, Validators.required),
-      trabajo_actual: new FormControl( null, Validators.required),
+      trabajoActual: new FormControl( null, Validators.required),
       nickname: new FormControl( null, Validators.required),
       email: new FormControl( null, [Validators.required, Validators.pattern(this.email)] ),
       email2: new FormControl( null, [Validators.required, Validators.pattern(this.email)] ),
@@ -59,9 +65,42 @@ export class RegistroComponent implements OnInit {
         { validators: [this.sonIguales('password', 'password2'), this.correosIguales('email', 'email2')] }
     // ]
     );
+    this.forma.setValue({
+      nombre: 'Irving',
+      apellidos: 'Rosado Aldana',
+      trabajoActual: 'nini',
+      nickname: 'irosado',
+      email: 'test@gmail.com',
+      email2: 'test@gmail.com',
+      password: '123456',
+      password2: '123456',
+    });
   }
 
-  registrarUsuarios(forma) {
-    console.log(forma);
+  registrarUsuarios() {
+    if ( this.forma.invalid ) {
+      return;
+    }
+
+      // if ( !this.forma.value.condiciones) {
+      //   swal('Importante', 'Debe aceptar las condiciones', 'warning');
+      //   return;
+      // }
+    const usuario = new Usuario(
+      this.forma.value.nombre,
+      this.forma.value.apellidos,
+      this.forma.value.email,
+      this.forma.value.password,
+      this.forma.value.trabajoActual,
+      this.forma.value.nickname,
+      // this.forma.value.img,
+    );
+    // console.log(usuario);
+    this.usuariosService.crearUsuario(usuario)
+    .subscribe( resp => {
+
+      console.log(resp);
+      this.router.navigate(['/login']);
+    });
   }
 }

@@ -7,8 +7,8 @@ import { AdminComponent } from './admin/admin.component';
 import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 
 const appRoutes: Routes = [
-    // { path: 'login', component: LoginComponent },
-    // { path: 'registro', component: RegistroComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'registro', component: RegistroComponent },
     // { path: 'admin', component: AdminComponent },
     { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];

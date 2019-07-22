@@ -6,7 +6,7 @@
             <div class="card card2">
                 <div class="card-body">
 
-                    <form class="" ngNativeValidate (ngSubmit)="registrarUsuarios(forma)" [formGroup]="forma" (change)="registrarUsuarios(forma)">
+                    <form class="" ngNativeValidate (ngSubmit)="registrarUsuarios()" [formGroup]="forma" (change)="registrarUsuarios()">
                         <div class="row">
 
                             <div class="form-group col-md-6 col-lg-6 col">
@@ -20,14 +20,13 @@
                             </div>
                             <div class="col-sm-12"></div>
                             <div class="form-group col-lg-6 col-md-6 col">
-                                <input formControlName="trabajo_actual" type="text" class="form-control" placeholder="Trabajo actual" name="trabajo_actual" required>
+                                <input formControlName="trabajoActual" type="text" class="form-control" placeholder="Trabajo actual" name="trabajoActual" required>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col">
                                 <input formControlName="nickname" type="text" class="form-control" placeholder="Nombre de usuario" name="nickname" required>
                             </div>
                             <div class="form-group col-lg-12">
-                                <input formControlName="email" type="email" name="email" class="form-control" required 
-                                placeholder="Correo" [ngClass]="{'is-invalid': forma.controls.email.errors?.email || forma.errors?.correosIguales && !forma.controls.email.pristine, 'is-valid': !forma.errors?.correosIguales && !forma.controls.email.pristine}">
+                                <input formControlName="email" type="email" name="email" class="form-control" required placeholder="Correo" [ngClass]="{'is-invalid': forma.controls.email.errors?.email || forma.errors?.correosIguales && !forma.controls.email.pristine, 'is-valid': !forma.errors?.correosIguales && !forma.controls.email.pristine}">
                                 <div class="invalid-feedback" *ngIf="!forma.controls.email.errors">
                                     Los correos deben ser iguales
                                 </div>
@@ -36,8 +35,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col">
-                                <input  formControlName="email2" type="email" class="form-control" placeholder="Confirmar correo"
-                                    name="email2" required [ngClass]="{'is-invalid': forma.controls.email2.errors?.email || forma.errors?.correosIguales && !forma.controls.email2.pristine, 'is-valid': !forma.errors?.correosIguales && !forma.controls.email2.pristine}">
+                                <input formControlName="email2" type="email" class="form-control" placeholder="Confirmar correo" name="email2" required [ngClass]="{'is-invalid': forma.controls.email2.errors?.email || forma.errors?.correosIguales && !forma.controls.email2.pristine, 'is-valid': !forma.errors?.correosIguales && !forma.controls.email2.pristine}">
                                 <div class="invalid-feedback" *ngIf="!forma.controls.email2.errors">
                                     Los correos deben ser iguales
                                 </div>

@@ -7,11 +7,11 @@
 
                     <form class="" #f=ngForm (ngSubmit)="ingresar( f )">
                         <div class="form-label-group">
-                            <input type="email" class="form-control rounded-pill" required placeholder="Usuario">
+                            <input type="email" [ngModel]="email" name="email" class="form-control rounded-pill" required placeholder="Usuario">
                         </div>
 
                         <div class="form-label-group">
-                            <input type="password" class="form-control rounded-pill mt-2" required placeholder="Contraseña">
+                            <input ngModel name="password" type="password" class="form-control rounded-pill mt-2" required placeholder="Contraseña">
                         </div>
 
                         <div class="text-right mt-1">
