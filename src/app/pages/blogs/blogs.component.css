@@ -68,6 +68,11 @@ h6 {
     color: #6D1A5E;
 }
 
+.cuerpo {
+    font-family: 'Century Gothic Regular';
+    font-size: .9em;
+}
+
 .btn {
     background-color: none;
     border-color: none;

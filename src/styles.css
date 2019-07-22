@@ -65,22 +65,31 @@
 
 @font-face {
     font-family: 'copperplate Gothic';
-    font-style: bold;
-    src: url('/assets/fonts/Copperplate Gothic Bold V1/Copperplate Gothic Bold V1.woff');
+    font-style: normal;
+    font-weight: normal;
+    src: url('assets/fonts/CopperplateGothicBoldV1/CopperplateGothicBoldV1.woff') format('woff');
 }
+
+
+/* @font-face {
+    font-family: 'copperplate Gothic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Century Gothic Bold'), url('assets/fonts/GOTHICB.woff') format('woff');
+} */
 
 @font-face {
     font-family: 'Century Gothic Regular';
     font-style: normal;
     font-weight: normal;
-    src: url('/assets/fonts/century-gothic-cufonfonts-webfont/GOTHIC.woff') format('woff');
+    src: url('assets/fonts/century-gothic-cufonfonts-webfont/GOTHIC.woff') format('woff');
 }
 
 @font-face {
     font-family: 'the bold font';
     font-style: normal;
     font-weight: normal;
-    src: url('/assets/fonts/theboldfont.ttf') format('ttf');
+    src: url('assets/fonts/theboldfont.ttf') format('ttf');
 }
 
 .navbarText {

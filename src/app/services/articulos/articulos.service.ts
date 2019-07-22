@@ -62,6 +62,7 @@ export class ArticulosService {
   }
 
   subirArchivo( archivo, tipo: string, titulo, contenido, autor) {
+      console.log(tipo, titulo, contenido, autor);
       const url = URL_SERVICIOS + `/articulo/${tipo}`;
       return this.http.post(url, {
         img: archivo,

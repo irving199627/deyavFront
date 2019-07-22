@@ -15,7 +15,7 @@
                 <img class="foto-tarjeta" [src]="blog.img | imagen" alt="Card image cap" style="height: 224px;">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{blog.titulo | truncate: 40}}</h5>
-                    <p class="card-text">{{blog.contenido | truncate}}</p>
+                    <p class="card-text cuerpo">{{blog.contenido | truncate}}</p>
                     <!-- <a [routerLink]="[ '/admin/blog', blog._id] " class="btn mt-auto text-left p-0">Continuar leyendo...</a> -->
                     <div class="row">
                         <div class="col-lg-6"></div>
