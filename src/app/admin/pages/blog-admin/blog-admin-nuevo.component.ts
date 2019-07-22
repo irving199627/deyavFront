@@ -115,8 +115,21 @@ imageCropped(event: ImageCroppedEvent) {
     // this.cargaImagenesS.cargarImagenesFirebase(this.imagen64, 'blog');
     console.log(this.titulo, this.autor);
     this.artService.subirArchivo(this.imagen64, 'blog', this.titulo, this.mycontent, this.autor)
-    .subscribe( resp => {
-      console.log(resp);
+    .subscribe( (resp: any) => {
+      if (resp.ok) {
+        Swal.fire({
+          title: 'Blog Creado',
+          text: 'El blog ha sido creado con éxito',
+          type: 'success',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ok!'
+        }).then((result) => {
+          if (result.value) {
+            console.log('object');
+            this.router.navigate(['/admin/blog']);
+          }
+        });
+      }
     });
   }
 
