@@ -80,7 +80,8 @@ imageCropped(event: ImageCroppedEvent) {
     if (this.nuevo !== 'nuevo') {
       this.artService.getById(this.nuevo)
       .subscribe((resp: any) => {
-        this.articuloEditar = resp.articuloBD;
+        console.log(resp);
+        this.articuloEditar = resp.blogBD;
         this.nombreImagen = this.articuloEditar.img;
         console.log(this.articuloEditar);
       });
@@ -114,7 +115,7 @@ imageCropped(event: ImageCroppedEvent) {
   crearBlog() {
     // this.cargaImagenesS.cargarImagenesFirebase(this.imagen64, 'blog');
     console.log(this.titulo, this.autor);
-    this.artService.subirArchivo(this.imagen64, 'blog', this.titulo, this.mycontent, this.autor)
+    this.artService.subirArchivo(this.imagen64, this.titulo, this.mycontent, this.autor)
     .subscribe( (resp: any) => {
       if (resp.ok) {
         Swal.fire({

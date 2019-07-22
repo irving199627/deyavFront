@@ -70,6 +70,15 @@
     src: url('assets/fonts/CopperplateGothicBoldV1/CopperplateGothicBoldV1.woff') format('woff');
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
 
 /* @font-face {
     font-family: 'copperplate Gothic';

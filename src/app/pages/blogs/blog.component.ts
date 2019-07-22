@@ -26,7 +26,7 @@ export class BlogComponent implements OnInit {
     this.artService.getById(this.id)
         .subscribe((articulo: any) => {
           console.log(articulo);
-          this.articulo = articulo.articuloBD;
+          this.articulo = articulo.blogBD;
         });
   }
 

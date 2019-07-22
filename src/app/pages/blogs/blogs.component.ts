@@ -18,12 +18,12 @@ export class BlogsComponent implements OnInit {
   ngOnInit() {
     this.artService.getArticulos()
     .subscribe(resp => {
+      console.log(resp);
       this.blogs = resp;
-      console.log(this.blogs);
     });
     this.artService.getUltimoArticulos()
     .subscribe((resp: any) => {
-      this.ultimoActivo = this.artService.limpiarHTML(resp.articulos)[0];
+      this.ultimoActivo = this.artService.limpiarHTML(resp.blogs)[0];
     });
   }
 

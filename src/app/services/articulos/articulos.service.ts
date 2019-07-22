@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 export class ArticulosService {
   expAncla = /<a href="(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?">(.*)<\/a>/g;
   totalConteo = 0;
-  articles = [];
+  blogs = [];
   ultimo = [];
   headers: {
     'Access-Control-Allow-Origin': '*',
@@ -34,8 +34,8 @@ export class ArticulosService {
     const urlGet = URL_SERVICIOS + '/blog';
     return this.http.get(urlGet)
     .pipe(map((resp: any) => {
-      this.articles = this.limpiarHTML(resp.articulos);
-      return this.articles;
+      this.blogs = this.limpiarHTML(resp.blogs);
+      return this.blogs;
     }));
   }
 
@@ -44,14 +44,15 @@ export class ArticulosService {
     const urlGet = URL_SERVICIOS + '/blog';
     return this.http.get(urlGet)
     .pipe(map((resp: any) => {
-      this.ultimo = resp.articulos;
+      console.log(resp);
+      this.ultimo = resp.blogs;
       // resp.articulos.pop();
       // return resp.articulos;
 
 
-      this.articles = this.limpiarHTML(resp.articulos);
-      this.articles.shift();
-      return this.articles;
+      this.blogs = this.limpiarHTML(resp.blogs);
+      this.blogs.shift();
+      return this.blogs;
     }));
   }
 
@@ -61,9 +62,8 @@ export class ArticulosService {
     return this.http.delete(url);
   }
 
-  subirArchivo( archivo, tipo: string, titulo, contenido, autor) {
-      console.log(tipo, titulo, contenido, autor);
-      const url = URL_SERVICIOS + `/${tipo}`;
+  subirArchivo( archivo, titulo, contenido, autor) {
+      const url = URL_SERVICIOS + `/blog`;
       return this.http.post(url, {
         img: archivo,
         contenido,
@@ -148,7 +148,7 @@ export class ArticulosService {
 
 
   limpiarHTML(texto) {
-      this.articles = [];
+      this.blogs = [];
       const txt = texto;
       console.log(txt);
       // tslint:disable-next-line:prefer-for-of
@@ -172,10 +172,10 @@ export class ArticulosService {
           element.contenido = element.contenido.toString().replace(/<\/sub>/g, ''); // </sub>
           element.contenido = element.contenido.toString().replace(/<sup>/g, ''); // <sup>
           element.contenido = element.contenido.toString().replace(/<\/sup>/g, ''); // </sup>
-          this.articles.push(element);
+          this.blogs.push(element);
         }
 
       }
-      return this.articles;
+      return this.blogs;
   }
 }
