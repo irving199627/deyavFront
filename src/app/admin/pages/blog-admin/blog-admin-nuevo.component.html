@@ -41,7 +41,7 @@
 
         <div class="col-lg-6" style="width: 300px; max-height: 920px;">
             <p>El tamaño de la imagen es: {{evento.width}} px de ancho y {{evento.height}} px de alto</p>
-            <img [src]="croppedImage" />
+            <img [src]="croppedImage" class="img-fluid" />
             <!-- <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
         <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;"> -->
         </div>
@@ -96,7 +96,7 @@
         <div class="col-lg-6" style="width: 300px; max-height: 920px;">
             <p>El tamaño de la imagen es: {{evento.width}} px de ancho y {{evento.height}} px de alto</p>
             <img class="img-fluid" [src]="articuloEditar.img | imagen" *ngIf="!croppedImage" />
-            <img [src]="croppedImage" *ngIf="croppedImage" />
+            <img [src]="croppedImage" *ngIf="croppedImage" class="img-fluid" />
             <!-- <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
       <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;"> -->
         </div>
