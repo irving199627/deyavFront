@@ -20,6 +20,7 @@ export class BlogComponent implements OnInit {
       this.route.params.subscribe((id: any) => {
         this.id = id.id;
       });
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   ngOnInit() {

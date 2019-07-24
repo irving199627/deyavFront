@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { CargarImagenesService } from '../../../services/cargar-imagenes.service';
 import { ArticulosService } from '../../../services/articulos/articulos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from 'src/app/interfaces/blog';
+import { SubirImagenService } from '../../../services/subirImagen/subir-imagen.service';
 declare const $: any;
 @Component({
   selector: 'app-blog-admin-nuevo',
@@ -13,9 +13,9 @@ declare const $: any;
 })
 export class BlogAdminNuevoComponent implements OnInit {
   nuevo: string;
+  guardando = false;
   titulo: string;
   autor: string;
-  urlImg = '/assets/img/servicios/iconos';
   ckeConfig: any;
   articuloEditar: Blog = {
     titulo: '',
@@ -24,57 +24,27 @@ export class BlogAdminNuevoComponent implements OnInit {
     contenido: ''
   };
   nombreImagen;
-  evento = {
-    width: 0,
-    height: 0
-  };
   mycontent: string;
-  imagen64;
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
 
   constructor(
     public cargaImagenesS: CargarImagenesService,
     public artService: ArticulosService,
+    public subirImagenService: SubirImagenService,
     public route: ActivatedRoute,
     private router: Router
     ) { this.mycontent = ``;
         this.route.params.subscribe(params => {
           this.nuevo = params.action;
         });
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
-  fileChangeEvent(event: any): void {
-    console.log(event.target.files[0].type);
-    if (event) {
-      if (!event.target.files[0].type.startsWith('image')) {
-        Swal.fire('No es una imagen', 'Solo seleccionar imagenes con las extenciones jpg, jpge, png', 'error');
-        $('#imagen')[0].value = '';
-        return;
-      }
-      const extensionesValidas = ['jpg', 'png', 'jpeg'];
-      const extensionArchivo = event.target.files[0].type.split('/')[1];
-      if (extensionesValidas.indexOf(extensionArchivo) < 0) {
-        Swal.fire('Extensión no válida', 'Solo seleccionar imagenes con las extenciones jpg, jpge, png', 'error');
-        return;
-      }
-      this.imageChangedEvent = event;
-    }
-}
-imageCropped(event: ImageCroppedEvent) {
-    if (event.file.type.startsWith('image')) {
-      this.croppedImage = event.base64;
-      const imagen64 = this.croppedImage.toString();
-      const imagenbase64 = imagen64.replace('data:image/png;base64,', '');
-      this.imagen64 = imagenbase64;
-      this.evento = event;
-    } else {
-      Swal.fire('No es una imagen', 'Solo seleccionar imagenes con las extenciones jpg, jpge, png', 'error');
-    }
-
-    // const binaryData = new Buffer(this.croppedImage.replace(/^data:image\/png;base64,/, ''), 'base64').toString('binary');
-    // console.log(binaryData);
-}
+//   fileChangeEvent(event: any): void {
+//   this.subirImagenService.fileChangeEvent(event);
+// }
+// imageCropped(event: ImageCroppedEvent) {
+//   this.subirImagenService.imageCropped(event);
+// }
 
   ngOnInit() {
     if (this.nuevo !== 'nuevo') {
@@ -115,7 +85,8 @@ imageCropped(event: ImageCroppedEvent) {
   crearBlog() {
     // this.cargaImagenesS.cargarImagenesFirebase(this.imagen64, 'blog');
     console.log(this.titulo, this.autor);
-    this.artService.subirArchivo(this.imagen64, this.titulo, this.mycontent, this.autor)
+    this.guardando = true;
+    this.artService.subirArchivo(this.subirImagenService.imagen64, this.titulo, this.mycontent, this.autor)
     .subscribe( (resp: any) => {
       if (resp.ok) {
         Swal.fire({
@@ -126,7 +97,8 @@ imageCropped(event: ImageCroppedEvent) {
           confirmButtonText: 'Ok!'
         }).then((result) => {
           if (result.value) {
-            console.log('object');
+            this.guardando = false;
+            this.subirImagenService.croppedImage = null;
             this.router.navigate(['/admin/blog']);
           }
         });
@@ -136,10 +108,10 @@ imageCropped(event: ImageCroppedEvent) {
 
 
   actualizarBlog(forma) {
-    if (this.imagen64 !== undefined) {
+    if (this.subirImagenService.imagen64 !== undefined) {
       const datosNuevos = {
         contenido: forma.contenido,
-        img: this.imagen64,
+        img: this.subirImagenService.imagen64,
         nombreImagen: this.nombreImagen,
         titulo: forma.titulo,
         autor: forma.autor
@@ -185,28 +157,4 @@ imageCropped(event: ImageCroppedEvent) {
     });
     }
   }
-
-  // seleccionImagen( archivo: File ) {
-  //   console.log(archivo);
-  //   if (!archivo) {
-  //     this.imagenSubir = null;
-  //     return;
-  //   }
-
-  //   if (archivo.type.indexOf('image') < 0 ) {
-  //     this.imagenSubir = null;
-  //     Swal.fire('Solo imagenes', 'El archivo seleccionado no es una imagen', 'error');
-  //     console.log('Solo imagenes', 'El archivo seleccionado no es una imagen', 'error');
-  //     return;
-  //   }
-  //   this.imagenSubir = archivo;
-
-  //   const reader = new FileReader();
-  //   const urlImagenTemp = reader.readAsDataURL(archivo);
-
-  //   reader.onloadend = () => this.imagenTemp = reader.result.toString();
-
-  // }
-
-
 }

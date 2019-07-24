@@ -1,0 +1,117 @@
+<div class="container" *ngIf="parametroUrl === 'nuevo'" class="animated fadeIn">
+    <div class="row m-4">
+        <div class="col-lg-6 col-md-6">
+
+            <form class="needs-validation" role="form" #myForm="ngForm" accept-charset="" ngValidate enctype="multipart/form-data">
+                <label for="ValidarTitulo">Título</label>
+                <input autocomplete="off" #tituloValidator="ngModel" [(ngModel)]="titulo" name="titulo" type="text" class="form-control" [ngClass]="{'is-invalid': tituloValidator.invalid, 'is-valid': tituloValidator.valid}" id="ValidarTitulo" placeholder="Titulo" required>
+                <div class="invalid-feedback" *ngIf="tituloValidator.invalid">
+                    El campo titulo es obligatorio.
+                </div>
+
+
+                <label for="ValidarCategoria">Categoria</label>
+                <div class="form-group">
+                    <select [(ngModel)]="categoria" #categoriaValidator="ngModel" name="categoria" class="custom-select" required id="ValidarCategoria" [ngClass]="{'is-invalid': categoriaValidator.invalid, 'is-valid': categoriaValidator.valid}">
+                          <option value="PSICOLOGIA">PSICOLOGÍA</option>
+                          <option value="DESARROLLO HUMANO">DESARROLLO HUMANO</option>
+                          <option value="3">Three</option>
+                        </select>
+                    <div class="invalid-feedback" *ngIf="categoriaValidator.invalid">El campo categoría es obligatoria</div>
+                </div>
+                <label for="ValidarPrecio">Precio</label>
+                <input #precioValidator="ngModel" [(ngModel)]="precio" name="precio" type="number" class="form-control" [ngClass]="{'is-invalid': precioValidator.invalid, 'is-valid': precioValidator.valid}" id="ValidarPrecio" placeholder="Precio" required>
+                <div class="invalid-feedback" *ngIf="precioValidator.invalid">
+                    El campo titulo es obligatorio.
+                </div>
+                <label for="imagen">Imagen</label>
+                <div class="custom-file">
+                    <input #imagenValidator="ngModel" [(ngModel)]="img" name="img" type="file" class="custom-file-input" [ngClass]="{'is-invalid': imagenValidator.invalid, 'is-valid': imagenValidator.valid}" id="imagen" required (change)="subirImagenService.fileChangeEvent($event)">
+                    <label class="custom-file-label" for="imagen">Seleccionar Imagen</label>
+                    <div class="invalid-feedback" *ngIf="imagenValidator.invalid">
+                        El campo imágen es obligatorio.
+                    </div>
+                </div>
+                <br>
+
+                <image-cropper [imageChangedEvent]="subirImagenService.imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="subirImagenService.imageCropped($event)"></image-cropper>
+                <label for="ValidarDescripcion">Descripcion</label>
+                <textarea autocomplete="off" #descripcionValidator="ngModel" [(ngModel)]="descripcion" name="descripcion" type="text" class="form-control" [ngClass]="{'is-invalid': descripcionValidator.invalid, 'is-valid': descripcionValidator.valid}" id="ValidarDescripcion"
+                    placeholder="descripcion" required></textarea>
+                <div class="invalid-feedback" *ngIf="descripcionValidator.invalid">
+                    El campo descripcion es obligatorio.
+                </div>
+                <button [disabled]="myForm.invalid || guardando" class="btn btn-primary mt-3" (click)="crearCurso()">Guardar</button>
+            </form>
+
+        </div>
+
+        <div class="col-lg-6" style="width: 300px; max-height: 920px;">
+            <p>El tamaño de la imagen es: {{subirImagenService.evento.width}} px de ancho y {{subirImagenService.evento.height}} px de alto</p>
+            <img [src]="subirImagenService.croppedImage" class="img-fluid" />
+            <!-- <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
+        <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;"> -->
+        </div>
+    </div>
+
+</div>
+<div class="container" *ngIf="parametroUrl !== 'nuevo' && cursoEditar !== undefined" class="animated fadeIn">
+
+    <div class="row m-4">
+        <div class="col-lg-6 col-md-6">
+
+            <form class="needs-validation" role="form" #myForm="ngForm" accept-charset="" ngValidate enctype="multipart/form-data">
+                <label for="ValidarTitulo">Título</label>
+                <input autocomplete="off" #tituloValidator="ngModel" [(ngModel)]="cursoEditar.titulo" name="titulo" type="text" class="form-control" [ngClass]="{'is-invalid': tituloValidator.invalid, 'is-valid': tituloValidator.valid}" id="ValidarTitulo" placeholder="Titulo"
+                    required>
+                <div class="invalid-feedback" *ngIf="tituloValidator.invalid">
+                    El campo titulo es obligatorio.
+                </div>
+
+
+                <label for="ValidarCategoria">Categoria</label>
+                <div class="form-group">
+                    <select [(ngModel)]="cursoEditar.categoria" #categoriaValidator="ngModel" name="categoria" class="custom-select" required id="ValidarCategoria" [ngClass]="{'is-invalid': categoriaValidator.invalid, 'is-valid': categoriaValidator.valid}">
+                              <option value="PSICOLOGIA">PSICOLOGÍA</option>
+                              <option value="DESARROLLO HUMANO">DESARROLLO HUMANO</option>
+                              <option value="3">Three</option>
+                            </select>
+                    <div class="invalid-feedback" *ngIf="categoriaValidator.invalid">El campo categoría es obligatoria</div>
+                </div>
+                <label for="ValidarPrecio">Precio</label>
+                <input #precioValidator="ngModel" [(ngModel)]="cursoEditar.precio" name="precio" type="number" class="form-control" [ngClass]="{'is-invalid': precioValidator.invalid, 'is-valid': precioValidator.valid}" id="ValidarPrecio" placeholder="Precio" required>
+                <div class="invalid-feedback" *ngIf="precioValidator.invalid">
+                    El campo titulo es obligatorio.
+                </div>
+                <label for="imagen">Imagen</label>
+                <div class="custom-file">
+                    <input #imagenValidator="ngModel" [(ngModel)]="img" name="img" type="file" class="custom-file-input" [ngClass]="{'is-invalid': imagenValidator.invalid, 'is-valid': imagenValidator.valid}" id="imagen" required (change)="subirImagenService.fileChangeEvent($event)">
+                    <label class="custom-file-label" for="imagen">Seleccionar Imagen</label>
+                    <div class="invalid-feedback" *ngIf="imagenValidator.invalid">
+                        El campo imágen es obligatorio.
+                    </div>
+                </div>
+                <br>
+
+                <image-cropper [imageChangedEvent]="subirImagenService.imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="subirImagenService.imageCropped($event)"></image-cropper>
+                <label for="ValidarDescripcion">Descripcion</label>
+                <textarea autocomplete="off" #descripcionValidator="ngModel" [(ngModel)]="cursoEditar.descripcion" name="descripcion" type="text" class="form-control" [ngClass]="{'is-invalid': descripcionValidator.invalid, 'is-valid': descripcionValidator.valid}" id="ValidarDescripcion"
+                    placeholder="descripcion" required></textarea>
+                <div class="invalid-feedback" *ngIf="descripcionValidator.invalid">
+                    El campo descripcion es obligatorio.
+                </div>
+                <button [disabled]="myForm.invalid || guardando" class="btn btn-primary mt-3" (click)="crearCurso()">Guardar</button>
+            </form>
+
+        </div>
+
+        <div class="col-lg-6" style="width: 300px; max-height: 920px;">
+            <p>El tamaño de la imagen es: {{subirImagenService.evento.width}} px de ancho y {{subirImagenService.evento.height}} px de alto</p>
+            <img [src]="subirImagenService.croppedImage" class="img-fluid" />
+            <img class="img-fluid" [src]="cursoEditar.imagen | imagen: 'curso'" *ngIf="!subirImagenService.croppedImage" />
+            <!-- <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
+            <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;"> -->
+        </div>
+    </div>
+
+</div>

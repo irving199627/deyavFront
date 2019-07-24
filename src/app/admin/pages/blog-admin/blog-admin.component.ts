@@ -14,7 +14,9 @@ export class BlogAdminComponent implements OnInit {
   ultimoActivo: any;
   p = 0;
   collection = [];
-  constructor(public artService: ArticulosService) {}
+  constructor(public artService: ArticulosService) {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
 
 
 

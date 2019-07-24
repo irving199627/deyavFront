@@ -1,31 +1,13 @@
-<!-- <section class="container pt-5">
-    <h3 class="pl-3">{{articulo.titulo}}</h3>
-    <div style=" width: 100%; display: flex;">
-        <img [src]="articulo.img | imagen" alt="" class="col-12 col-sm-12 col-md-12 col-lg-12 centro" style="max-height: 25em; max-width: 37.5em;">
-    </div>
-    <p class="mt-2 pl-3 autor">Autor: Deyanira Trinidad Alvarez Villajuana</p>
-    <article>
-        <p class="text-justify" [innerHTML]="articulo.contenido"></p>
-    </article>
-    <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <button class="btn btn-outline-danger" (click)="eliminarArticulo()"><i class="fa fa-trash"></i></button>
-            </div>
-            <div class="col-lg-6">
-                <a [routerLink]="['/blog']">regresar</a>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<section class="container pt-5 animated fadeIn fast">
+<section class="container pt-5 animated fadeIn">
     <h3 class="pl-3 titulos">{{articulo.titulo}}</h3>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" style="height: 400px; background-color: #B583AD;">
-        <img [src]="articulo.img | imagen " alt="" class="img-articulo">
+    <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center" style="height: 400px; background-color: #B583AD;">
+        <img [src]="articulo.img | imagen " alt="" class="card-img-responsive">
+    </div> -->
+    <div class="text-center d-flex justify-content-center aling-content-center card-img-responsive" style="height: 400px; background-color: #B583AD;">
+        <img class="card-img-top" [src]="articulo.img | imagen " alt="Card image cap">
     </div>
     <p class="mt-2 pl-3 autor">{{articulo.autor}}</p>
     <article>
         <p class="text-justify textoGeneral" [innerHTML]="articulo.contenido"></p>
     </article>
+</section>

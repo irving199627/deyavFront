@@ -1,10 +1,10 @@
-<div class="d-flex" id="wrapper">
+<!-- <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar -->
+    Sidebar
     <app-sidebar></app-sidebar>
-    <!-- /#sidebar-wrapper -->
+    /#sidebar-wrapper
 
-    <!-- Page Content -->
+    Page Content
     <div id="page-content-wrapper">
 
         <app-navbar-admin></app-navbar-admin>
@@ -13,7 +13,39 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
+    /#page-content-wrapper
 
 </div>
-<!-- Button trigger modal -->
+Button trigger modal -->
+
+<!-- <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">DEYAV Admin </div>
+    <div class="list-group list-group-flush" *ngFor="let item of menu">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <a href="#" class="list-group-item list-group-item-action bg-light" aria-controls="collapseOne" data-toggle="collapse" aria-expanded="false" data-target="#collapseOne"><i class="fas fa-user-lock"></i> {{item.titulo}}</a>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" *ngFor="let submenu of item.submenu">
+                    <a [routerLink]="[submenu.url]" routerLinkActive="router-link-active" id="dropdownMenuButton" class="list-group-item list-group-item-action bg-dark text-white">{{submenu.titulo}}</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div> -->
+<app-navbar-admin></app-navbar-admin>
+<div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark text-white">
+        <i class="fas fa-bars"></i>
+    </a>
+    <app-sidebar></app-sidebar>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+
+    </main>
+    <!-- page-content" -->
+</div>

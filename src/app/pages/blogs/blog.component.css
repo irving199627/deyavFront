@@ -25,6 +25,10 @@ section img {
     transition: 0.2s;
 }
 
+.card-img-responsive img {
+    object-fit: contain;
+}
+
 .card {
     border-radius: 10px;
     box-shadow: 0 0 15px rgb(121, 121, 121);

@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor( ) { }
+  constructor( ) {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
 
 
 

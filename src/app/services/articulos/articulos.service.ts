@@ -26,7 +26,7 @@ export class ArticulosService {
   }
 
   getUltimoArticulos() {
-    const url = URL_SERVICIOS + '/blog/ultimo';
+    const url = URL_SERVICIOS + '/blog/1/ultimo';
     return this.http.get(url);
   }
 

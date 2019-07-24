@@ -17,26 +17,61 @@
         <i class="fab fa-whatsapp fa-3x"></i>
     </a>
 </main>
-<footer class="fondo-linear" id="form-contactanos">
-    <!-- FORMULARIO CONTACTANOS -->
+<!-- <footer class="fondo-linear" id="form-contactanos">
     <div class="container">
         <div class="row">
             <form action="" class="col-12 col-sm-12 col-md-6 col-lg-6 p-5 text-center text-white">
                 <h3 class="mb-4">CONTÁCTANOS</h3>
                 <div class="row mb-4">
-                    <input type="text" name="nombre" class="form-control" id="inputnombre" placeholder="Nombre" required>
+                    <input type="text" name="nombre" class="form-control" #nombre id="inputnombre" placeholder="Nombre" required>
                 </div>
                 <div class="row mb-4">
-                    <input type="email" name="email" class="form-control" id="inputemail" placeholder="Email" required>
+                    <input type="email" name="email" class="form-control" #email id="inputemail" placeholder="Email" required>
                 </div>
 
                 <div class="row mb-4">
-                    <textarea class="form-control" name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje" required></textarea>
+                    <textarea class="form-control" name="mensaje" id="mensaje" #mensaje cols="30" rows="10" placeholder="Mensaje" required></textarea>
                 </div>
-                <button class="form-control btn-submit mx-auto" type="submit">Enviar</button>
+                <button type="button" class="form-control btn-submit mx-auto" (click)="contactar(nombre.value, email.value, mensaje.value)">Enviar</button>
             </form>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-5 text-center text-white ">
                 <img class="fluid-img" src="assets/img/mariposas-footer.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+</footer> -->
+<footer class="fondo-linear mt-auto align-self-end" id="form-contactanos">
+    <!-- FORMULARIO CONTACTANOS -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-5 text-center text-white ">
+                <form action="">
+                    <h3 class="mb-4">CONTÁCTANOS</h3>
+                    <div class="row mb-4">
+                        <input type="text" name="nombre" class="form-control" id="inputnombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="row mb-4">
+                        <input type="email" name="email" class="form-control" id="inputemail" placeholder="Email" required>
+                    </div>
+
+                    <div class="row mb-4">
+                        <textarea class="form-control" name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button class="form-control btn-submit mx-auto" type="submit">Enviar</button>
+                </form>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-5 my-auto text-center text-white d-none d-sm-none d-md-block">
+                <img class="fluid-img" src="assets/img/mariposas-footer.svg" alt="">
+            </div>
+        </div>
+        <div id="informacion-contacto" class="d-flex flex-column align-items-center flex-md-row justify-content-md-between pb-4">
+            <span class="mb-2 text-white">Telefono: 9999999999</span>
+            <a class="mb-2 btn-borde-blanco py-2 px-4" href="">SUSCRIBIRSE AL BOLETÍN</a>
+            <div class="d-flex justify-content-between" id="social-media" style="width: 150px;">
+                <a href=""><i class="fab fa-twitter fa-2x text-white"></i></a>
+                <a href=""><i class="fab fa-facebook fa-2x text-white"></i></a>
+                <a href=""><i class="fab fa-youtube fa-2x text-white"></i></a>
             </div>
         </div>
     </div>

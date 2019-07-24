@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/service.index';
 declare const $: any;
-declare function init_plugins();
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,10 +12,6 @@ export class NavbarComponent implements OnInit {
   constructor( public usuarioService: UsuariosService) { }
 
   ngOnInit() {
-    init_plugins();
-    $(() => {
-      $('#bootnavbar').bootnavbar();
-  });
     // tslint:disable-next-line:no-shadowed-variable
       // const defaults = {
       //   sm: 540,

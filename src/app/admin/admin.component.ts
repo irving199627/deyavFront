@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare const $: any;
-declare function init_plugins();
+declare function inicialiazarSidebar();
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -11,10 +11,7 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    init_plugins();
-    $(() => {
-      $('#bootnavbar').bootnavbar();
-  });
+    inicialiazarSidebar();
   }
 
 

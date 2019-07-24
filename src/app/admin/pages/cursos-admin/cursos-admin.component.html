@@ -1,0 +1,49 @@
+<div class="animated fadeIn faster">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4 class="card-title">Cursos registrados ( <small>{{ total }}</small> )</h4>
+            </div>
+            <div class="col-lg-6">
+                <a class="btn btn-outline-morado-suave float-right m-20" [routerLink]="['/admin/cursos/nuevo']">Nuevo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class=" ">
+            <table class=" table table-hover" style="width: 100%;">
+                <thead>
+                    <tr class="bg-morado-ligero">
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let curso of cursos">
+                        <td><img [src]="curso.imagen | imagen: 'curso'" class="img-fluid w70" alt=""></td>
+                        <th>{{ curso.titulo | truncate: 10 }}</th>
+                        <td>{{ curso.descripcion | truncate: 30}} </td>
+                        <td>{{ curso.categoria }}</td>
+                        <td>${{ curso.precio }}</td>
+                        <td>
+                            <a class="btn btn-warning mr-2" [routerLink]="['/admin/cursos', curso._id]">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+
+                            <button class="btn btn-danger" (click)="borrarCurso(curso._id)">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

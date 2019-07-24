@@ -4,22 +4,21 @@
     --morado: #6D1A5E;
 }
 
-footer {
-    /* bottom: 0; */
-    clear: both;
-    position: relative;
-    width: 100%;
-    /* background-image: url('/assets/img/barra de abajo.png'); */
-    background-size: cover;
-}
-
 .margen {
     margin-left: 2%;
 }
 
-.container {
+
+/* .container {
     padding: 1%;
+    footer {
+    position: relative;
+    bottom: 0;
+    clear: both;
+    width: 100%;
+    background-size: cover;
 }
+} */
 
 .fondo-linear {
     background: linear-gradient(90deg, #6D1A5E, #1480C2);
@@ -38,16 +37,21 @@ footer {
 }
 
 .btn-whatsapp {
+    font-size: 0.6em;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 70px;
+    right: 20px;
     background-color: #6D1A5E;
-    padding: 15px;
+    padding: 10px;
     border-radius: 100%;
     color: #fff;
     z-index: 10;
 }
 
 .btn-whatsapp:hover {
-    color: #fff !important;
+    text-decoration: none;
+}
+
+form {
+    width: 100%;
 }

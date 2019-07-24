@@ -59,13 +59,16 @@ a {
     border-top-right-radius: 10px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h6 {
-    font-family: "TheBoldFont";
-    color: #6D1A5E;
+.title {
+    font-family: "TheBoldFont" !important;
+}
+
+.text-morado {
+    color: #6D1A5E !important;
+}
+
+.text-morado-ligero {
+    color: #B583AD !important;
 }
 
 .cuerpo {
@@ -95,9 +98,81 @@ section img {
     border-top-right-radius: 10px;
 }
 
+
+/* Estilo tarjetas */
+
 .card {
-    border-radius: 10px;
+    border-radius: 10px !important;
     box-shadow: 0 0 15px rgb(121, 121, 121);
+}
+
+.card-img-responsive {
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+
+.card-text {
+    display: -webkit-box;
+    line-height: 2;
+    /* -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden; */
+}
+
+.card-img-responsive img {
+    object-fit: contain;
+}
+
+
+/* Estilo del blog */
+
+#ultimos-articulos .card {
+    height: 500px;
+    max-width: 290px;
+}
+
+#ultimos-articulos .card-img-responsive {
+    height: 200px;
+    background-color: #B583AD;
+}
+
+#ultimos-articulos .card-text {
+    max-height: 180px;
+}
+
+#ultimos-articulos .card-img-responsive img {
+    object-fit: contain;
+}
+
+
+/* /EXPANDE EL TAMAÑO DE LA IMAGEN DENTRO DEL CONTENEDOR/ */
+
+@supports(object-fit: cover) {
+    #ultimos-articulos .card-img-responsive img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+
+/* /FIN ESTILOS PARA TARJETAS/ */
+
+#ultimo-articulo {
+    height: 560px;
+}
+
+#ultimo-articulo .card-img-responsive {
+    height: 300px;
+    background-color: #B583AD;
+}
+
+#ultimo-articulo .card-text {
+    height: 100px;
+    /* display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; */
+    /* overflow: hidden; */
 }
 
 a {
@@ -110,7 +185,13 @@ a {
     border: none;
 }
 
-article {}
+.card-title {
+    display: -webkit-box;
+    line-height: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
 input[type=text] {
     /* border: 2px #ed8344 solid; */
@@ -138,7 +219,7 @@ input[type=text]:focus {
 
 #card-primary {
     height: 400px;
-    background-color: var(--morado-ligero);
+    background-color: #B583AD;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }

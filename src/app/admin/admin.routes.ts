@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { BlogAdminComponent } from './pages/blog-admin/blog-admin.component';
 import { BlogAdminNuevoComponent } from './pages/blog-admin/blog-admin-nuevo.component';
+import { CursosAdminComponent } from './pages/cursos-admin/cursos-admin.component';
+import { CursosAdminNuevoComponent } from './pages/cursos-admin/cursos-admin-nuevo.component';
 
 const AdminRoutes: Routes = [
     { path: 'admin',
@@ -13,6 +15,8 @@ const AdminRoutes: Routes = [
         // { path: 'about', component: AboutComponent },
         { path: 'blog', component: BlogAdminComponent },
         { path: 'blog/:action', component: BlogAdminNuevoComponent },
+        { path: 'cursos', component: CursosAdminComponent },
+        { path: 'cursos/:action', component: CursosAdminNuevoComponent },
         // { path: 'blog/:id', component: BlogComponent },
         // { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
         // { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },

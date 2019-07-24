@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container-fluid2 {
     background-image: url('./assets/img/fondologin.png');
     background-repeat: no-repeat;
@@ -63,11 +69,6 @@
     /* remove underline from anchors */
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     min-height: 100vh;
 }
@@ -116,4 +117,27 @@ body {
 
 .pointer {
     cursor: pointer;
+}
+
+.btn-borde-blanco {
+    display: inline-block;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    background-color: none;
+    transition: 0.2s;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-borde-blanco:hover {
+    background: #fff;
+    transition: 0.2s;
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+.w70 {
+    width: 70px;
 }

@@ -17,9 +17,10 @@
                 </div>
                 <!-- <input type="file" name="" class="form-control-file" #imagen id="" (change)="seleccionImagen($event.target.files[0])" required> -->
                 <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
+                <label for="imagen">Imagen</label>
                 <div class="custom-file">
-                    <input #imagenValidator="ngModel" [(ngModel)]="articuloEditar.img" name="img" type="file" class="custom-file-input" [ngClass]="{'is-invalid': imagenValidator.invalid, 'is-valid': imagenValidator.valid}" id="imagen" required (change)="fileChangeEvent($event)">
-                    <label class="custom-file-label" for="imagen">Subir Archivo</label>
+                    <input #imagenValidator="ngModel" [(ngModel)]="articuloEditar.img" name="img" type="file" class="custom-file-input" [ngClass]="{'is-invalid': imagenValidator.invalid, 'is-valid': imagenValidator.valid}" id="imagen" required (change)="subirImagenService.fileChangeEvent($event)">
+                    <label class="custom-file-label" for="imagen">Seleccionar Imagen</label>
                     <div class="invalid-feedback" *ngIf="imagenValidator.invalid">
                         El campo imágen es obligatorio.
                     </div>
@@ -27,7 +28,7 @@
                 <br>
 
                 <!-- <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper> -->
-                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="imageCropped($event)"></image-cropper>
+                <image-cropper [imageChangedEvent]="subirImagenService.imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="subirImagenService.imageCropped($event)"></image-cropper>
                 <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
                     <ckeditor [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
                     </ckeditor>
@@ -35,13 +36,13 @@
                 </div>
                 <!-- <div [innerHTML]="mycontent" id="txt"></div>
             <p>{{mycontent}}</p> -->
-                <button [disabled]="myForm.invalid" class="btn btn-primary" (click)="crearBlog()">Guardar</button>
+                <button [disabled]="myForm.invalid || guardando" class="btn btn-primary" (click)="crearBlog()">Guardar</button>
             </form>
         </div>
 
         <div class="col-lg-6" style="width: 300px; max-height: 920px;">
-            <p>El tamaño de la imagen es: {{evento.width}} px de ancho y {{evento.height}} px de alto</p>
-            <img [src]="croppedImage" class="img-fluid" />
+            <p>El tamaño de la imagen es: {{subirImagenService.evento.width}} px de ancho y {{subirImagenService.evento.height}} px de alto</p>
+            <img [src]="subirImagenService.croppedImage" class="img-fluid" />
             <!-- <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
         <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;"> -->
         </div>
@@ -72,7 +73,7 @@
                 <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
                 <br>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="imagen" required (change)="fileChangeEvent($event)">
+                    <input type="file" class="custom-file-input" id="imagen" required (change)="subirImagenService.fileChangeEvent($event)">
                     <label class="custom-file-label" for="imagen">Subir Archivo</label>
                 </div>
                 <br>
@@ -81,7 +82,7 @@
 
                 <br>
                 <!-- <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper> -->
-                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="imageCropped($event)"></image-cropper>
+                <image-cropper [imageChangedEvent]="subirImagenService.imageChangedEvent" [maintainAspectRatio]="false" [resizeToWidth]="0" format="png" (imageCropped)="subirImagenService.imageCropped($event)"></image-cropper>
                 <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
                     <ckeditor [(ngModel)]="articuloEditar.contenido" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
                     </ckeditor>
@@ -94,9 +95,9 @@
         </div>
 
         <div class="col-lg-6" style="width: 300px; max-height: 920px;">
-            <p>El tamaño de la imagen es: {{evento.width}} px de ancho y {{evento.height}} px de alto</p>
-            <img class="img-fluid" [src]="articuloEditar.img | imagen" *ngIf="!croppedImage" />
-            <img [src]="croppedImage" *ngIf="croppedImage" class="img-fluid" />
+            <p>El tamaño de la imagen es: {{subirImagenService.evento.width}} px de ancho y {{subirImagenService.evento.height}} px de alto</p>
+            <img class="img-fluid" [src]="articuloEditar.img | imagen: 'blog'" *ngIf="!subirImagenService.croppedImage" />
+            <img [src]="subirImagenService.croppedImage" *ngIf="subirImagenService.croppedImage" class="img-fluid" />
             <!-- <img *ngIf="!imagenTemp" [src]="'xxx'" alt="" style="width: 100%;">
       <img *ngIf="imagenTemp" [src]="imagenTemp" alt="" class="w150" style="width: 100%;"> -->
         </div>

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsuariosService } from './service.index';
+import { UsuariosService, ArticulosService, CargarImagenesService, CursosService, SubirImagenService } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
-import { ArticulosService } from './articulos/articulos.service';
-import { CargarImagenesService } from './cargar-imagenes.service';
+
 
 @NgModule({
   declarations: [],
@@ -14,7 +13,9 @@ import { CargarImagenesService } from './cargar-imagenes.service';
   providers: [
     UsuariosService,
     ArticulosService,
-    CargarImagenesService
+    CargarImagenesService,
+    SubirImagenService,
+    CursosService
   ]
 })
 export class ServiceModule { }

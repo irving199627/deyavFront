@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -11,9 +10,10 @@ export class SidebarComponent implements OnInit {
       titulo: 'Mantenimientos',
       icono: 'mdi mdi-folder-lock-open',
       submenu: [
-        { titulo: 'Usuarios', url: '/admin/usuarios' },
         { titulo: 'Blog', url: '/admin/blog' },
+        { titulo: 'Cursos', url: '/admin/cursos' },
         { titulo: 'Noticias', url: '/admin/noticias' },
+        { titulo: 'Usuarios', url: '/admin/usuarios' },
       ]
     }
   ];
