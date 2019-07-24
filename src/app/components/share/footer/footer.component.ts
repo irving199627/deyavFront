@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../../config/config';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-footer',
@@ -25,6 +26,24 @@ export class FooterComponent implements OnInit {
       email
     }).subscribe(resp => {
       console.log(resp);
+    });
+  }
+
+  suscribirse() {
+    Swal.fire({
+      title: 'Ingrese su correo electrónico para suscribirse al boletin',
+      input: 'email',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Suscribirme!',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          title: 'Suscrito',
+        });
+      }
     });
   }
 }

@@ -4,7 +4,7 @@
         <img [src]="articulo.img | imagen " alt="" class="card-img-responsive">
     </div> -->
     <div class="text-center d-flex justify-content-center aling-content-center card-img-responsive" style="height: 400px; background-color: #B583AD;">
-        <img class="card-img-top" [src]="articulo.img | imagen " alt="Card image cap">
+        <img class="card-img-top" [src]="articulo.img | imagen: 'blog' " alt="Card image cap">
     </div>
     <p class="mt-2 pl-3 autor">{{articulo.autor}}</p>
     <article>

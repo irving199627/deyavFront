@@ -125,12 +125,13 @@ body {
     border-radius: 10px;
     background-color: none;
     transition: 0.2s;
-    color: #fff;
+    color: #fff !important;
     font-weight: 600;
 }
 
 .btn-borde-blanco:hover {
     background: #fff;
+    color: #167CBE !important;
     transition: 0.2s;
 }
 
